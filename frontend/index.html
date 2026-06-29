@@ -223,6 +223,7 @@
   .tour-tip .trow{display:flex;justify-content:space-between;align-items:center;gap:10px}
   .tour-tip.center .trow{justify-content:center}
   .tour-tip .steps{font-size:12px;color:var(--muted)}
+  .tour-tip .tourhint{margin:-6px 0 12px;font-size:12px;color:var(--accent);font-weight:600}
   .tour-tip button{font:inherit;cursor:pointer;border-radius:9px;padding:8px 16px;font-size:13px;font-weight:600;
     border:1px solid var(--accent);background:var(--accent);color:#fff}
   [data-theme="dark"] .tour-tip button{color:#1a130d}
@@ -324,8 +325,10 @@
 <div class="overlay" id="inviteOverlay"><div class="invite-modal" id="inviteModal"></div></div>
 
 <script>
+// Same-origin when served by the backend (localhost:8000 or Render). Only fall
+// back to a local backend when the file is opened directly off disk (file://).
 const API_BASE = new URLSearchParams(location.search).get("api")
-  || (location.port === "8000" ? "" : "http://127.0.0.1:8000");
+  || (location.protocol === "file:" ? "http://127.0.0.1:8000" : "");
 
 /* ---------- theme ---------- */
 function setTheme(t){
@@ -921,7 +924,8 @@ const TOUR=[
   {sel:"#submit",title:"5 · Plan the evening",text:"Tap here and you'll get a few complete evenings to choose from."},
   {center:true,title:"Then make it yours",text:"Open any plan to see its map and timeline — then tap “Create your invitation” to make a keepsake you can send. Enjoy your evening."},
 ];
-let tourI=0, tourTarget=null;
+let tourI=0, tourTarget=null, tourCleanup=null;
+function clearTourListeners(){ if(tourCleanup){ tourCleanup(); tourCleanup=null; } }
 function tourEls(){
   let ring=document.getElementById("tourRing"), tip=document.getElementById("tourTip");
   if(!ring){ ring=document.createElement("div"); ring.id="tourRing"; ring.className="tour-ring"; document.body.appendChild(ring); }
@@ -936,18 +940,27 @@ function startTour(force){
   window.addEventListener("scroll",repositionTour,true);
 }
 function showTourStep(){
+  clearTourListeners();
   const s=TOUR[tourI], {ring,tip}=tourEls();
-  const last=tourI===TOUR.length-1;
-  tip.innerHTML=`<h4>${s.title}</h4><p>${s.text}</p>
+  const first=tourI===0, last=tourI===TOUR.length-1;
+  const targetEl = s.center ? null : document.querySelector(s.sel||"");
+  const back = first ? "" : '<button class="skip" onclick="prevTour()">‹ Back</button>';
+  const right = targetEl
+    ? '<button class="skip" onclick="endTour()">Skip tour</button>'
+    : `<button onclick="nextTour()">${last?"Done":(first?"Start":"Next")}</button>`;
+  const hint = targetEl ? `<p class="tourhint">Tap the highlighted area to continue ›</p>` : "";
+  tip.innerHTML=`<h4>${s.title}</h4><p>${s.text}</p>${hint}
     <div class="trow"><span class="steps">${tourI+1} / ${TOUR.length}</span>
-      <span>${last?"":'<button class="skip" onclick="endTour()">Skip</button>'}
-      <button onclick="nextTour()">${last?"Done":"Next"}</button></span></div>`;
-  if(s.center || !document.querySelector(s.sel||"")){
+      <span>${back} ${right}</span></div>`;
+  if(!targetEl){
     tourTarget=null; ring.style.display="none"; tip.className="tour-tip center"; tip.style.top=""; tip.style.left="";
   }else{
-    tourTarget=document.querySelector(s.sel);
-    tourTarget.scrollIntoView({block:"center",behavior:"smooth"});
+    tourTarget=targetEl; tip.className="tour-tip";
+    targetEl.scrollIntoView({block:"center",behavior:"smooth"});
     setTimeout(()=>placeTour(),360);
+    const handler=()=>{ setTimeout(()=>{ tourI<TOUR.length-1 ? nextTour() : endTour(); },220); };
+    targetEl.addEventListener("click",handler);
+    tourCleanup=()=>targetEl.removeEventListener("click",handler);
   }
 }
 function placeTour(){
@@ -963,8 +976,10 @@ function placeTour(){
   tip.style.top=top+"px"; tip.style.left=left+"px";
 }
 function repositionTour(){ if(tourTarget) placeTour(); }
-function nextTour(){ tourI++; if(tourI>=TOUR.length) return endTour(); showTourStep(); }
+function nextTour(){ clearTourListeners(); tourI++; if(tourI>=TOUR.length) return endTour(); showTourStep(); }
+function prevTour(){ clearTourListeners(); if(tourI>0) tourI--; showTourStep(); }
 function endTour(){
+  clearTourListeners();
   markSeen("evening-onboarded");
   const ring=document.getElementById("tourRing"), tip=document.getElementById("tourTip");
   if(ring) ring.remove(); if(tip) tip.remove(); tourTarget=null;

@@ -471,8 +471,12 @@ availability, scraping). Deploy to Render only after the core loop feels right.
 - Note: exact one-click deep-links arrive automatically once venues are verified
   and `url_template` is populated — the search fallback is the interim.
 
-**M6 — Deploy to Render**
-- Containerize, env-managed API keys, basic rate limiting.
+**M6 — Deploy to Render** *(config ready ✓)*
+- ✓ `render.yaml` blueprint (free Python web service: build `pip install -r
+  requirements.txt`, start `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`,
+  health `/health`, optional `ANTHROPIC_API_KEY`). `.gitignore`, `README.md` added.
+- ☐ Push to GitHub (`Edisonccccc/time_master`) + create the Render Blueprint
+  (done from the user's machine — git can't run in the sandbox mount).
 
 ### Suggested repo layout
 

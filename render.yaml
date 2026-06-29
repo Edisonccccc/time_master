@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: evening-concierge
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      # Optional: set in the Render dashboard to enable LLM-written reasoning.
+      # When unset, the app uses the deterministic template wording.
+      - key: ANTHROPIC_API_KEY
+        sync: false

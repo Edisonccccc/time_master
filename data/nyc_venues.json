@@ -1,0 +1,5334 @@
+[
+  {
+    "id": "venue_001",
+    "name": "Atera",
+    "city": "NYC",
+    "neighborhood": "Tribeca",
+    "lat": 40.7176,
+    "lng": -74.005,
+    "cuisine": [
+      "tasting",
+      "american"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Counter tasting menu; deposit via Tock.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_002",
+    "name": "Frenchette",
+    "city": "NYC",
+    "neighborhood": "Tribeca",
+    "lat": 40.7193,
+    "lng": -74.0089,
+    "cuisine": [
+      "french"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Buzzy French; great room.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_003",
+    "name": "L'Appartement 4F",
+    "city": "NYC",
+    "neighborhood": "Brooklyn Heights",
+    "lat": 40.6957,
+    "lng": -73.9931,
+    "cuisine": [
+      "bakery",
+      "dessert"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.55,
+      "duration_min": 40,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Croissants/pastries; cozy.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_004",
+    "name": "Le Coucou",
+    "city": "NYC",
+    "neighborhood": "Soho",
+    "lat": 40.7195,
+    "lng": -73.9986,
+    "cuisine": [
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.72,
+      "ambiance": 0.92,
+      "formality": 0.45,
+      "special_factor": 0.88,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "anniversary",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Gorgeous room; special-feeling.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_005",
+    "name": "Rubirosa",
+    "city": "NYC",
+    "neighborhood": "Nolita",
+    "lat": 40.7222,
+    "lng": -73.9961,
+    "cuisine": [
+      "italian",
+      "pizza"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "casual_cool",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.7,
+      "intimacy": 0.42,
+      "ambiance": 0.55,
+      "formality": 0.18,
+      "special_factor": 0.42,
+      "duration_min": 80,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.45,
+      "central_transit": 0.78,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Vodka pizza; easy and warm.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_006",
+    "name": "Estela",
+    "city": "NYC",
+    "neighborhood": "Nolita",
+    "lat": 40.724,
+    "lng": -73.9949,
+    "cuisine": [
+      "mediterranean",
+      "small_plates"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.7,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Small plates, wine-forward; lively but intimate.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_007",
+    "name": "The Musket Room",
+    "city": "NYC",
+    "neighborhood": "Nolita",
+    "lat": 40.7224,
+    "lng": -73.9955,
+    "cuisine": [
+      "modern",
+      "tasting"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Tasting + a la carte; garden.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_008",
+    "name": "Balthazar",
+    "city": "NYC",
+    "neighborhood": "Soho",
+    "lat": 40.7227,
+    "lng": -73.9985,
+    "cuisine": [
+      "french",
+      "brasserie"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "lively_bistro",
+    "booking": {
+      "platform": "opentable",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.7,
+      "conversation": 0.62,
+      "intimacy": 0.52,
+      "ambiance": 0.78,
+      "formality": 0.3,
+      "special_factor": 0.55,
+      "duration_min": 90,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.3,
+      "staff_coordination": 0.55,
+      "central_transit": 0.78,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Iconic brasserie; loud and fun.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_009",
+    "name": "Raoul's",
+    "city": "NYC",
+    "neighborhood": "Soho",
+    "lat": 40.7259,
+    "lng": -74.0009,
+    "cuisine": [
+      "french",
+      "bistro"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "lively_bistro",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.62,
+      "intimacy": 0.52,
+      "ambiance": 0.72,
+      "formality": 0.3,
+      "special_factor": 0.55,
+      "duration_min": 90,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.3,
+      "staff_coordination": 0.55,
+      "central_transit": 0.78,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Steak au poivre; classic NY date spot.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_010",
+    "name": "Tacombi",
+    "city": "NYC",
+    "neighborhood": "Nolita",
+    "lat": 40.7227,
+    "lng": -73.9947,
+    "cuisine": [
+      "mexican",
+      "tacos"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "casual_cool",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.7,
+      "intimacy": 0.42,
+      "ambiance": 0.55,
+      "formality": 0.18,
+      "special_factor": 0.42,
+      "duration_min": 80,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.45,
+      "central_transit": 0.78,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Casual tacos; low pressure.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_011",
+    "name": "Pebble Bar",
+    "city": "NYC",
+    "neighborhood": "Tribeca",
+    "lat": 40.7155,
+    "lng": -74.0098,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Multi-floor cocktail bar.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_012",
+    "name": "Brandy Library",
+    "city": "NYC",
+    "neighborhood": "Tribeca",
+    "lat": 40.7188,
+    "lng": -74.0095,
+    "cuisine": [
+      "cocktails",
+      "whiskey"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.8,
+      "intimacy": 0.85,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Hushed, leather-bound; great for talking.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_013",
+    "name": "Via Carota",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7338,
+    "lng": -74.0027,
+    "cuisine": [
+      "italian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "lively_bistro",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.62,
+      "intimacy": 0.52,
+      "ambiance": 0.82,
+      "formality": 0.3,
+      "special_factor": 0.65,
+      "duration_min": 90,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.3,
+      "staff_coordination": 0.55,
+      "central_transit": 0.78,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "No-res Italian; charming, walk-in.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_014",
+    "name": "I Sodi",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7339,
+    "lng": -74.0048,
+    "cuisine": [
+      "italian",
+      "tuscan"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.78,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Intimate Tuscan; hard res.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_015",
+    "name": "L'Artusi",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7345,
+    "lng": -74.0066,
+    "cuisine": [
+      "italian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Lively modern Italian; counter seats.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_016",
+    "name": "Buvette",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7338,
+    "lng": -74.003,
+    "cuisine": [
+      "french",
+      "cafe"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "lively_bistro",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.7,
+      "ambiance": 0.72,
+      "formality": 0.3,
+      "special_factor": 0.55,
+      "duration_min": 90,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.3,
+      "staff_coordination": 0.55,
+      "central_transit": 0.78,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Tiny French cafe; cozy, walk-in.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_017",
+    "name": "One if by Land, Two if by Sea",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.732,
+    "lng": -74.003,
+    "cuisine": [
+      "american",
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "opentable",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.9,
+      "formality": 0.65,
+      "special_factor": 0.92,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.85,
+      "staff_coordination": 0.9,
+      "central_transit": 0.55,
+      "view": 0.45
+    },
+    "good_for": [
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Classic proposal spot; fireplaces.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_018",
+    "name": "Don Angie",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.739,
+    "lng": -74.0048,
+    "cuisine": [
+      "italian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Italian-American; chrysanthemum salad.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_019",
+    "name": "Anton's",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7349,
+    "lng": -74.0066,
+    "cuisine": [
+      "american",
+      "bistro"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "lively_bistro",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.62,
+      "intimacy": 0.52,
+      "ambiance": 0.72,
+      "formality": 0.3,
+      "special_factor": 0.55,
+      "duration_min": 90,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.3,
+      "staff_coordination": 0.55,
+      "central_transit": 0.78,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Warm neighborhood bistro.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_020",
+    "name": "4 Charles Prime Rib",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7351,
+    "lng": -74.0021,
+    "cuisine": [
+      "steakhouse"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.55,
+      "conversation": 0.68,
+      "intimacy": 0.75,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Tiny clubby steakhouse; very hard res.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_021",
+    "name": "Blue Hill",
+    "city": "NYC",
+    "neighborhood": "Greenwich Village",
+    "lat": 40.732,
+    "lng": -73.999,
+    "cuisine": [
+      "american",
+      "farm"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Farm-to-table tasting.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_022",
+    "name": "Katana Kitten",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7349,
+    "lng": -74.0066,
+    "cuisine": [
+      "cocktails",
+      "japanese"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Japanese-American cocktails; fun.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_023",
+    "name": "Employees Only",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.7339,
+    "lng": -74.006,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.6,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Speakeasy-style; lively late.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_024",
+    "name": "The Ten Bells",
+    "city": "NYC",
+    "neighborhood": "Lower East Side",
+    "lat": 40.718,
+    "lng": -73.9905,
+    "cuisine": [
+      "wine",
+      "tapas"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "wine_bar",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.75,
+      "intimacy": 0.8,
+      "ambiance": 0.72,
+      "formality": 0.3,
+      "special_factor": 0.55,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.5,
+      "central_transit": 0.72,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Candle-lit natural wine bar.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_025",
+    "name": "Hudson River Greenway",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.73,
+    "lng": -74.011,
+    "cuisine": [
+      "walk",
+      "waterfront"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.65,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Riverside walk at sunset.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_026",
+    "name": "Washington Square Park",
+    "city": "NYC",
+    "neighborhood": "Greenwich Village",
+    "lat": 40.7308,
+    "lng": -73.9973,
+    "cuisine": [
+      "walk",
+      "park"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.65,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Iconic arch; people-watching.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_027",
+    "name": "Cosme",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.7397,
+    "lng": -73.9897,
+    "cuisine": [
+      "mexican",
+      "modern"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Modern Mexican; husk meringue.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_028",
+    "name": "Cafe Mogador",
+    "city": "NYC",
+    "neighborhood": "East Village",
+    "lat": 40.7263,
+    "lng": -73.9849,
+    "cuisine": [
+      "moroccan",
+      "mediterranean"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "casual_cool",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.7,
+      "intimacy": 0.42,
+      "ambiance": 0.55,
+      "formality": 0.18,
+      "special_factor": 0.42,
+      "duration_min": 80,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.45,
+      "central_transit": 0.78,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Long-running, easy, lively.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_029",
+    "name": "Lavender Lake",
+    "city": "NYC",
+    "neighborhood": "Gowanus",
+    "lat": 40.676,
+    "lng": -73.992,
+    "cuisine": [
+      "american",
+      "bar"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "casual_cool",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.7,
+      "intimacy": 0.42,
+      "ambiance": 0.55,
+      "formality": 0.18,
+      "special_factor": 0.42,
+      "duration_min": 80,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.45,
+      "central_transit": 0.78,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Relaxed bar w/ backyard.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_030",
+    "name": "Wayla",
+    "city": "NYC",
+    "neighborhood": "Lower East Side",
+    "lat": 40.717,
+    "lng": -73.9905,
+    "cuisine": [
+      "thai"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Vibrant Thai; good for sharing.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_031",
+    "name": "Kru",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.714,
+    "lng": -73.953,
+    "cuisine": [
+      "thai",
+      "tasting"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Refined Thai tasting.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_032",
+    "name": "Contra",
+    "city": "NYC",
+    "neighborhood": "Lower East Side",
+    "lat": 40.7195,
+    "lng": -73.9905,
+    "cuisine": [
+      "modern",
+      "tasting"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Creative tasting; wine.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_033",
+    "name": "Dirt Candy",
+    "city": "NYC",
+    "neighborhood": "Lower East Side",
+    "lat": 40.7185,
+    "lng": -73.9905,
+    "cuisine": [
+      "vegetarian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": true,
+      "vegan": true,
+      "gluten_free": true
+    },
+    "notes": "Inventive vegetarian.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_034",
+    "name": "Avant Garden",
+    "city": "NYC",
+    "neighborhood": "East Village",
+    "lat": 40.7263,
+    "lng": -73.9839,
+    "cuisine": [
+      "vegan",
+      "vegetarian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.7,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": true,
+      "vegan": true,
+      "gluten_free": true
+    },
+    "notes": "Elegant vegan small plates.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_035",
+    "name": "Attaboy",
+    "city": "NYC",
+    "neighborhood": "Lower East Side",
+    "lat": 40.7185,
+    "lng": -73.9912,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.85,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "No menu, bartender's choice; intimate.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_036",
+    "name": "Please Don't Tell",
+    "city": "NYC",
+    "neighborhood": "East Village",
+    "lat": 40.7265,
+    "lng": -73.9839,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "phone_only",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Phone-booth entry speakeasy.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_037",
+    "name": "Angel's Share",
+    "city": "NYC",
+    "neighborhood": "East Village",
+    "lat": 40.729,
+    "lng": -73.989,
+    "cuisine": [
+      "cocktails",
+      "japanese"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Hidden Japanese cocktail bar.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_038",
+    "name": "Veniero's",
+    "city": "NYC",
+    "neighborhood": "East Village",
+    "lat": 40.7283,
+    "lng": -73.9836,
+    "cuisine": [
+      "dessert",
+      "italian"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.55,
+      "duration_min": 40,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Historic pastry shop; cannoli.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_039",
+    "name": "Chikalicious Dessert Bar",
+    "city": "NYC",
+    "neighborhood": "East Village",
+    "lat": 40.7298,
+    "lng": -73.9876,
+    "cuisine": [
+      "dessert"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.65,
+      "duration_min": 40,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Dessert tasting at a counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_040",
+    "name": "Eleven Madison Park",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.7416,
+    "lng": -73.9872,
+    "cuisine": [
+      "plant_based",
+      "tasting"
+    ],
+    "price_tier": 4,
+    "michelin": "3_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "fine_dining_temple",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.7,
+      "intimacy": 0.7,
+      "ambiance": 0.95,
+      "formality": 0.9,
+      "special_factor": 0.98,
+      "duration_min": 180,
+      "seating_counter": false,
+      "fixed_menu": true,
+      "privacy": 0.7,
+      "staff_coordination": 0.92,
+      "central_transit": 0.6,
+      "view": 0.3
+    },
+    "good_for": [
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": true,
+      "vegan": true,
+      "gluten_free": true
+    },
+    "notes": "Plant-based 3-star tasting.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_041",
+    "name": "Gramercy Tavern",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.7385,
+    "lng": -73.9882,
+    "cuisine": [
+      "american"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.9,
+      "formality": 0.65,
+      "special_factor": 0.85,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.45
+    },
+    "good_for": [
+      "anniversary",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Warm icon; tavern + dining room.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_042",
+    "name": "Cote",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.74,
+    "lng": -73.9905,
+    "cuisine": [
+      "korean",
+      "steakhouse"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.55,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Korean steakhouse; lively.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_043",
+    "name": "Gabriel Kreuther",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.754,
+    "lng": -73.984,
+    "cuisine": [
+      "french",
+      "alsatian"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "fine_dining_temple",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.7,
+      "intimacy": 0.7,
+      "ambiance": 0.95,
+      "formality": 0.9,
+      "special_factor": 0.98,
+      "duration_min": 180,
+      "seating_counter": false,
+      "fixed_menu": true,
+      "privacy": 0.7,
+      "staff_coordination": 0.92,
+      "central_transit": 0.6,
+      "view": 0.2
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Elegant Alsatian; refined.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_044",
+    "name": "The Clocktower",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.7415,
+    "lng": -73.9885,
+    "cuisine": [
+      "british",
+      "american"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "opentable",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.9,
+      "formality": 0.65,
+      "special_factor": 0.85,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.45
+    },
+    "good_for": [
+      "anniversary",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Handsome dining rooms.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_045",
+    "name": "Atomix",
+    "city": "NYC",
+    "neighborhood": "NoMad",
+    "lat": 40.744,
+    "lng": -73.984,
+    "cuisine": [
+      "korean",
+      "tasting"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Counter Korean tasting; cards explain courses.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_046",
+    "name": "Atoboy",
+    "city": "NYC",
+    "neighborhood": "NoMad",
+    "lat": 40.7445,
+    "lng": -73.985,
+    "cuisine": [
+      "korean"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Casual sibling of Atomix; prix fixe.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_047",
+    "name": "Casa Mono",
+    "city": "NYC",
+    "neighborhood": "Gramercy",
+    "lat": 40.737,
+    "lng": -73.987,
+    "cuisine": [
+      "spanish",
+      "tapas"
+    ],
+    "price_tier": 3,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.7,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Cozy Spanish tapas; counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_048",
+    "name": "Eleven Madison Bar",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.7416,
+    "lng": -73.9872,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Bar room at EMP; refined.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_049",
+    "name": "Raines Law Room",
+    "city": "NYC",
+    "neighborhood": "Chelsea",
+    "lat": 40.74,
+    "lng": -73.996,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.35,
+      "conversation": 0.62,
+      "intimacy": 0.85,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Plush hidden lounge; intimate.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_050",
+    "name": "Madison Square Park",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.7424,
+    "lng": -73.988,
+    "cuisine": [
+      "walk",
+      "park"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.65,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Leafy park; Shake Shack nearby.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_051",
+    "name": "Eataly Lavazza Cafe",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.7421,
+    "lng": -73.9897,
+    "cuisine": [
+      "dessert",
+      "coffee",
+      "gelato"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.55,
+      "duration_min": 40,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Gelato/coffee; casual.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_052",
+    "name": "Le Bernardin",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.7615,
+    "lng": -73.9818,
+    "cuisine": [
+      "seafood",
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": "3_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "fine_dining_temple",
+    "booking": {
+      "platform": "opentable",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.7,
+      "intimacy": 0.7,
+      "ambiance": 0.95,
+      "formality": 0.9,
+      "special_factor": 0.98,
+      "duration_min": 180,
+      "seating_counter": false,
+      "fixed_menu": true,
+      "privacy": 0.7,
+      "staff_coordination": 0.95,
+      "central_transit": 0.6,
+      "view": 0.2
+    },
+    "good_for": [
+      "anniversary",
+      "business",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Pinnacle seafood 3-star.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_053",
+    "name": "Per Se",
+    "city": "NYC",
+    "neighborhood": "Columbus Circle",
+    "lat": 40.7681,
+    "lng": -73.983,
+    "cuisine": [
+      "american",
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": "3_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "fine_dining_temple",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.7,
+      "intimacy": 0.7,
+      "ambiance": 0.95,
+      "formality": 0.9,
+      "special_factor": 0.99,
+      "duration_min": 180,
+      "seating_counter": false,
+      "fixed_menu": true,
+      "privacy": 0.7,
+      "staff_coordination": 0.92,
+      "central_transit": 0.6,
+      "view": 0.8
+    },
+    "good_for": [
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Keller's 3-star; Central Park views.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_054",
+    "name": "The Modern",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.7615,
+    "lng": -73.9776,
+    "cuisine": [
+      "american",
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.9,
+      "formality": 0.65,
+      "special_factor": 0.9,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.6
+    },
+    "good_for": [
+      "anniversary",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "MoMA views; bar room + dining room.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_055",
+    "name": "Aquavit",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.7587,
+    "lng": -73.972,
+    "cuisine": [
+      "scandinavian"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "fine_dining_temple",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.7,
+      "intimacy": 0.7,
+      "ambiance": 0.95,
+      "formality": 0.9,
+      "special_factor": 0.98,
+      "duration_min": 180,
+      "seating_counter": false,
+      "fixed_menu": true,
+      "privacy": 0.7,
+      "staff_coordination": 0.92,
+      "central_transit": 0.6,
+      "view": 0.2
+    },
+    "good_for": [
+      "anniversary",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Refined Nordic.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_056",
+    "name": "Masa",
+    "city": "NYC",
+    "neighborhood": "Columbus Circle",
+    "lat": 40.7685,
+    "lng": -73.983,
+    "cuisine": [
+      "sushi",
+      "omakase"
+    ],
+    "price_tier": 4,
+    "michelin": "3_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.99,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Ultra-premium sushi counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_057",
+    "name": "Sushi Ginza Onodera",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.761,
+    "lng": -73.974,
+    "cuisine": [
+      "sushi",
+      "omakase"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.95,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Edomae omakase counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_058",
+    "name": "Jean-Georges",
+    "city": "NYC",
+    "neighborhood": "Columbus Circle",
+    "lat": 40.769,
+    "lng": -73.9817,
+    "cuisine": [
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "fine_dining_temple",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.7,
+      "intimacy": 0.7,
+      "ambiance": 0.95,
+      "formality": 0.9,
+      "special_factor": 0.98,
+      "duration_min": 180,
+      "seating_counter": false,
+      "fixed_menu": true,
+      "privacy": 0.7,
+      "staff_coordination": 0.92,
+      "central_transit": 0.6,
+      "view": 0.55
+    },
+    "good_for": [
+      "anniversary",
+      "business",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Park-view fine dining.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_059",
+    "name": "Keens Steakhouse",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.7505,
+    "lng": -73.987,
+    "cuisine": [
+      "steakhouse"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "opentable",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.6,
+      "ambiance": 0.9,
+      "formality": 0.65,
+      "special_factor": 0.8,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.45
+    },
+    "good_for": [
+      "business",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Historic clubby steakhouse.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_060",
+    "name": "The Grill",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.7585,
+    "lng": -73.972,
+    "cuisine": [
+      "american",
+      "steakhouse"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.95,
+      "formality": 0.65,
+      "special_factor": 0.88,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.45
+    },
+    "good_for": [
+      "business",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Iconic power-dining room.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_061",
+    "name": "Bar SixtyFive",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.7592,
+    "lng": -73.9794,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "hotel_bar_view",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.55,
+      "conversation": 0.55,
+      "intimacy": 0.55,
+      "ambiance": 0.9,
+      "formality": 0.5,
+      "special_factor": 0.85,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.35,
+      "staff_coordination": 0.55,
+      "central_transit": 0.65,
+      "view": 0.95
+    },
+    "good_for": [
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Rainbow Room bar; skyline views.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_062",
+    "name": "The Campbell",
+    "city": "NYC",
+    "neighborhood": "Midtown",
+    "lat": 40.7527,
+    "lng": -73.9772,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.9,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Grand Central jewel-box bar.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_063",
+    "name": "The Crown",
+    "city": "NYC",
+    "neighborhood": "Midtown East",
+    "lat": 40.757,
+    "lng": -73.969,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "hotel_bar_view",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.55,
+      "conversation": 0.55,
+      "intimacy": 0.55,
+      "ambiance": 0.9,
+      "formality": 0.5,
+      "special_factor": 0.85,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.35,
+      "staff_coordination": 0.55,
+      "central_transit": 0.65,
+      "view": 0.95
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Rooftop views.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_064",
+    "name": "Lady M",
+    "city": "NYC",
+    "neighborhood": "Midtown East",
+    "lat": 40.761,
+    "lng": -73.969,
+    "cuisine": [
+      "dessert",
+      "cake"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.55,
+      "duration_min": 40,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Mille crepe cakes; elegant.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_065",
+    "name": "Central Park (Bethesda Terrace)",
+    "city": "NYC",
+    "neighborhood": "Central Park",
+    "lat": 40.774,
+    "lng": -73.971,
+    "cuisine": [
+      "walk",
+      "park"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.8,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date",
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Romantic terrace + fountain.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_066",
+    "name": "Daniel",
+    "city": "NYC",
+    "neighborhood": "Upper East Side",
+    "lat": 40.7645,
+    "lng": -73.967,
+    "cuisine": [
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "fine_dining_temple",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.7,
+      "intimacy": 0.7,
+      "ambiance": 0.95,
+      "formality": 0.92,
+      "special_factor": 0.98,
+      "duration_min": 180,
+      "seating_counter": false,
+      "fixed_menu": true,
+      "privacy": 0.7,
+      "staff_coordination": 0.92,
+      "central_transit": 0.6,
+      "view": 0.2
+    },
+    "good_for": [
+      "anniversary",
+      "proposal",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Boulud flagship; jacket suggested.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_067",
+    "name": "Cafe Boulud",
+    "city": "NYC",
+    "neighborhood": "Upper East Side",
+    "lat": 40.771,
+    "lng": -73.964,
+    "cuisine": [
+      "french"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.9,
+      "formality": 0.65,
+      "special_factor": 0.85,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.45
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Refined, quieter Boulud.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_068",
+    "name": "Bemelmans Bar",
+    "city": "NYC",
+    "neighborhood": "Upper East Side",
+    "lat": 40.7762,
+    "lng": -73.964,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.75,
+      "ambiance": 0.95,
+      "formality": 0.35,
+      "special_factor": 0.85,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Carlyle classic; live piano, murals.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_069",
+    "name": "Tanoshi Sushi",
+    "city": "NYC",
+    "neighborhood": "Upper East Side",
+    "lat": 40.77,
+    "lng": -73.951,
+    "cuisine": [
+      "sushi",
+      "omakase"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.8,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.95,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Tiny BYOB omakase counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_070",
+    "name": "The Loeb Boathouse area",
+    "city": "NYC",
+    "neighborhood": "Central Park",
+    "lat": 40.7757,
+    "lng": -73.969,
+    "cuisine": [
+      "walk",
+      "park"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.65,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Lakeside stroll.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_071",
+    "name": "Lilia",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.718,
+    "lng": -73.952,
+    "cuisine": [
+      "italian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.82,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Missy Robbins pasta; very hard res.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_072",
+    "name": "Misi",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.722,
+    "lng": -73.965,
+    "cuisine": [
+      "italian",
+      "pasta"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Pasta + veg; airy room.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_073",
+    "name": "Aska",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.711,
+    "lng": -73.966,
+    "cuisine": [
+      "scandinavian",
+      "tasting"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Nordic tasting in a townhouse.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_074",
+    "name": "Francie",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.714,
+    "lng": -73.961,
+    "cuisine": [
+      "american",
+      "european"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.25
+    },
+    "good_for": [
+      "anniversary",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Elegant; duck for two.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_075",
+    "name": "Oxomoco",
+    "city": "NYC",
+    "neighborhood": "Greenpoint",
+    "lat": 40.73,
+    "lng": -73.954,
+    "cuisine": [
+      "mexican"
+    ],
+    "price_tier": 3,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Wood-fired Mexican; garden vibe.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_076",
+    "name": "Roman's",
+    "city": "NYC",
+    "neighborhood": "Fort Greene",
+    "lat": 40.688,
+    "lng": -73.966,
+    "cuisine": [
+      "italian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "lively_bistro",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.62,
+      "intimacy": 0.52,
+      "ambiance": 0.72,
+      "formality": 0.3,
+      "special_factor": 0.55,
+      "duration_min": 90,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.3,
+      "staff_coordination": 0.55,
+      "central_transit": 0.78,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Daily-changing Italian; warm.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_077",
+    "name": "Olmsted",
+    "city": "NYC",
+    "neighborhood": "Prospect Heights",
+    "lat": 40.677,
+    "lng": -73.97,
+    "cuisine": [
+      "american"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Backyard garden; playful.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_078",
+    "name": "The River Café",
+    "city": "NYC",
+    "neighborhood": "Dumbo",
+    "lat": 40.7038,
+    "lng": -73.996,
+    "cuisine": [
+      "american"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "opentable",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.9,
+      "formality": 0.85,
+      "special_factor": 0.95,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.9,
+      "central_transit": 0.55,
+      "view": 0.95
+    },
+    "good_for": [
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Waterfront under Brooklyn Bridge; jacket.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_079",
+    "name": "Cecconi's Dumbo",
+    "city": "NYC",
+    "neighborhood": "Dumbo",
+    "lat": 40.7028,
+    "lng": -73.9905,
+    "cuisine": [
+      "italian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.5
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Bridge views; buzzy Italian.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_080",
+    "name": "Sushi Katsuei",
+    "city": "NYC",
+    "neighborhood": "Park Slope",
+    "lat": 40.67,
+    "lng": -73.981,
+    "cuisine": [
+      "sushi",
+      "omakase"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.95,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Approachable omakase.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_081",
+    "name": "Maison Premiere",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.7155,
+    "lng": -73.962,
+    "cuisine": [
+      "cocktails",
+      "oysters"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.88,
+      "formality": 0.35,
+      "special_factor": 0.7,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Absinthe + oysters; gorgeous.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_082",
+    "name": "The Ides Bar",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.722,
+    "lng": -73.958,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "hotel_bar_view",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.55,
+      "conversation": 0.55,
+      "intimacy": 0.55,
+      "ambiance": 0.9,
+      "formality": 0.5,
+      "special_factor": 0.85,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.35,
+      "staff_coordination": 0.55,
+      "central_transit": 0.65,
+      "view": 0.95
+    },
+    "good_for": [
+      "first_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Wythe Hotel rooftop; Manhattan skyline.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_083",
+    "name": "Westlight",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.722,
+    "lng": -73.9575,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "hotel_bar_view",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.55,
+      "conversation": 0.55,
+      "intimacy": 0.55,
+      "ambiance": 0.9,
+      "formality": 0.5,
+      "special_factor": 0.85,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.35,
+      "staff_coordination": 0.55,
+      "central_transit": 0.65,
+      "view": 0.95
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "22nd-floor skyline views.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_084",
+    "name": "Van Leeuwen Ice Cream",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.714,
+    "lng": -73.961,
+    "cuisine": [
+      "dessert",
+      "ice_cream"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.55,
+      "duration_min": 40,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Ice cream; easy stroll stop.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_085",
+    "name": "Brooklyn Bridge Park Promenade",
+    "city": "NYC",
+    "neighborhood": "Dumbo",
+    "lat": 40.702,
+    "lng": -73.996,
+    "cuisine": [
+      "walk",
+      "waterfront"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.85,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date",
+      "anniversary",
+      "proposal"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Skyline views; Jane's Carousel.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_086",
+    "name": "Williamsburg Waterfront (Domino Park)",
+    "city": "NYC",
+    "neighborhood": "Williamsburg",
+    "lat": 40.714,
+    "lng": -73.968,
+    "cuisine": [
+      "walk",
+      "waterfront"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.65,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Riverside park; sunset over Manhattan.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_087",
+    "name": "Crown Shy",
+    "city": "NYC",
+    "neighborhood": "FiDi",
+    "lat": 40.7065,
+    "lng": -74.008,
+    "cuisine": [
+      "american"
+    ],
+    "price_tier": 3,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Approachable in a landmark building.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_088",
+    "name": "SAGA",
+    "city": "NYC",
+    "neighborhood": "FiDi",
+    "lat": 40.7065,
+    "lng": -74.0078,
+    "cuisine": [
+      "american",
+      "tasting"
+    ],
+    "price_tier": 4,
+    "michelin": "2_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "modern_tasting",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.25,
+      "conversation": 0.6,
+      "intimacy": 0.75,
+      "ambiance": 0.9,
+      "formality": 0.78,
+      "special_factor": 0.94,
+      "duration_min": 150,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.55,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.7
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Top-floor tasting; city views.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_089",
+    "name": "Manhatta",
+    "city": "NYC",
+    "neighborhood": "FiDi",
+    "lat": 40.7075,
+    "lng": -74.009,
+    "cuisine": [
+      "american"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "romantic_special",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.3,
+      "conversation": 0.78,
+      "intimacy": 0.85,
+      "ambiance": 0.9,
+      "formality": 0.65,
+      "special_factor": 0.88,
+      "duration_min": 130,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.75,
+      "staff_coordination": 0.85,
+      "central_transit": 0.55,
+      "view": 0.9
+    },
+    "good_for": [
+      "anniversary",
+      "proposal",
+      "business"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "60th-floor sweeping views.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_090",
+    "name": "Sushi Nakazawa",
+    "city": "NYC",
+    "neighborhood": "West Village",
+    "lat": 40.733,
+    "lng": -74.004,
+    "cuisine": [
+      "sushi",
+      "omakase"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.9,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "anniversary",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Famed omakase counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_091",
+    "name": "Sushi Noz",
+    "city": "NYC",
+    "neighborhood": "Upper East Side",
+    "lat": 40.772,
+    "lng": -73.956,
+    "cuisine": [
+      "sushi",
+      "omakase"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.95,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Hinoki counter; Edomae.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_092",
+    "name": "Torien",
+    "city": "NYC",
+    "neighborhood": "East Village",
+    "lat": 40.727,
+    "lng": -73.984,
+    "cuisine": [
+      "yakitori",
+      "tasting"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.95,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Yakitori omakase counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_093",
+    "name": "Shion 69 Leonard Street",
+    "city": "NYC",
+    "neighborhood": "Tribeca",
+    "lat": 40.717,
+    "lng": -74.004,
+    "cuisine": [
+      "sushi",
+      "omakase"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.95,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Premium sushi counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_094",
+    "name": "Noz 17",
+    "city": "NYC",
+    "neighborhood": "Chelsea",
+    "lat": 40.743,
+    "lng": -74.005,
+    "cuisine": [
+      "sushi",
+      "seafood"
+    ],
+    "price_tier": 4,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "omakase_counter",
+    "booking": {
+      "platform": "tock",
+      "url_template": null,
+      "requires_deposit": true
+    },
+    "tags": {
+      "noise": 0.2,
+      "conversation": 0.55,
+      "intimacy": 0.75,
+      "ambiance": 0.78,
+      "formality": 0.78,
+      "special_factor": 0.95,
+      "duration_min": 120,
+      "seating_counter": true,
+      "fixed_menu": true,
+      "privacy": 0.45,
+      "staff_coordination": 0.82,
+      "central_transit": 0.6,
+      "view": 0.1
+    },
+    "good_for": [
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Seafood-forward counter.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_095",
+    "name": "Tatiana",
+    "city": "NYC",
+    "neighborhood": "Lincoln Center",
+    "lat": 40.772,
+    "lng": -73.983,
+    "cuisine": [
+      "caribbean",
+      "american"
+    ],
+    "price_tier": 4,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.55,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.85,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date",
+      "anniversary"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Kwame Onwuachi; very hard res.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_096",
+    "name": "Rezdôra",
+    "city": "NYC",
+    "neighborhood": "Flatiron",
+    "lat": 40.738,
+    "lng": -73.989,
+    "cuisine": [
+      "italian",
+      "pasta"
+    ],
+    "price_tier": 3,
+    "michelin": "1_star",
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Emilia-Romagna pasta tasting.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_097",
+    "name": "Hav & Mar",
+    "city": "NYC",
+    "neighborhood": "Chelsea",
+    "lat": 40.747,
+    "lng": -74.005,
+    "cuisine": [
+      "seafood",
+      "scandinavian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "date_night_notable",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.68,
+      "intimacy": 0.62,
+      "ambiance": 0.82,
+      "formality": 0.45,
+      "special_factor": 0.8,
+      "duration_min": 105,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.45,
+      "staff_coordination": 0.7,
+      "central_transit": 0.7,
+      "view": 0.15
+    },
+    "good_for": [
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Marcus Samuelsson seafood.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_098",
+    "name": "Cull & Pistol",
+    "city": "NYC",
+    "neighborhood": "Chelsea",
+    "lat": 40.7425,
+    "lng": -74.006,
+    "cuisine": [
+      "seafood"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dinner"
+    ],
+    "archetype": "casual_cool",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.58,
+      "conversation": 0.7,
+      "intimacy": 0.42,
+      "ambiance": 0.55,
+      "formality": 0.18,
+      "special_factor": 0.42,
+      "duration_min": 80,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.45,
+      "central_transit": 0.78,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Chelsea Market seafood; casual.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_099",
+    "name": "Sip & Guzzle",
+    "city": "NYC",
+    "neighborhood": "Greenwich Village",
+    "lat": 40.733,
+    "lng": -74.001,
+    "cuisine": [
+      "cocktails"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.65,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Two-floor cocktail bar.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_100",
+    "name": "Dante",
+    "city": "NYC",
+    "neighborhood": "Greenwich Village",
+    "lat": 40.7295,
+    "lng": -74.001,
+    "cuisine": [
+      "cocktails",
+      "italian"
+    ],
+    "price_tier": 3,
+    "michelin": null,
+    "role": [
+      "drinks"
+    ],
+    "archetype": "cocktail_bar_intimate",
+    "booking": {
+      "platform": "resy",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.5,
+      "conversation": 0.62,
+      "intimacy": 0.82,
+      "ambiance": 0.85,
+      "formality": 0.35,
+      "special_factor": 0.7,
+      "duration_min": 60,
+      "seating_counter": true,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.5,
+      "central_transit": 0.7,
+      "view": 0.1
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Negronis; World's Best Bar alum.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_101",
+    "name": "Levain Bakery",
+    "city": "NYC",
+    "neighborhood": "Upper West Side",
+    "lat": 40.779,
+    "lng": -73.98,
+    "cuisine": [
+      "dessert",
+      "cookies"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.55,
+      "duration_min": 40,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Famous cookies; grab-and-walk.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_102",
+    "name": "Dominique Ansel Bakery",
+    "city": "NYC",
+    "neighborhood": "Soho",
+    "lat": 40.7255,
+    "lng": -74.003,
+    "cuisine": [
+      "dessert",
+      "bakery"
+    ],
+    "price_tier": 2,
+    "michelin": null,
+    "role": [
+      "dessert"
+    ],
+    "archetype": "dessert",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.45,
+      "conversation": 0.7,
+      "intimacy": 0.45,
+      "ambiance": 0.55,
+      "formality": 0.15,
+      "special_factor": 0.55,
+      "duration_min": 40,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.25,
+      "staff_coordination": 0.3,
+      "central_transit": 0.75,
+      "view": 0.05
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Cronut creator; treats.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_103",
+    "name": "The High Line",
+    "city": "NYC",
+    "neighborhood": "Chelsea",
+    "lat": 40.748,
+    "lng": -74.0048,
+    "cuisine": [
+      "walk",
+      "park"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.65,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date",
+      "second_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Elevated garden walk.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  },
+  {
+    "id": "venue_104",
+    "name": "Pier i / Riverside",
+    "city": "NYC",
+    "neighborhood": "Upper West Side",
+    "lat": 40.779,
+    "lng": -73.988,
+    "cuisine": [
+      "walk",
+      "waterfront"
+    ],
+    "price_tier": 1,
+    "michelin": null,
+    "role": [
+      "walk"
+    ],
+    "archetype": "walk",
+    "booking": {
+      "platform": "walk_in",
+      "url_template": null,
+      "requires_deposit": false
+    },
+    "tags": {
+      "noise": 0.15,
+      "conversation": 0.85,
+      "intimacy": 0.7,
+      "ambiance": 0.8,
+      "formality": 0.05,
+      "special_factor": 0.65,
+      "duration_min": 30,
+      "seating_counter": false,
+      "fixed_menu": false,
+      "privacy": 0.55,
+      "staff_coordination": 0.1,
+      "central_transit": 0.6,
+      "view": 0.85
+    },
+    "good_for": [
+      "first_date"
+    ],
+    "dietary": {
+      "vegetarian": false,
+      "vegan": false,
+      "gluten_free": false
+    },
+    "notes": "Hudson sunset walk.",
+    "sources": [
+      "knowledge_seed"
+    ],
+    "verified": false
+  }
+]

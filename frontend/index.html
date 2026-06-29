@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Evening — your special-occasion dining concierge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root{ --radius:16px; --maxw:1000px; }
+  [data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#161009; --bg2:#1e1610; --card:#241a12; --card2:#2a1f16;
+    --ink:#f6ece0; --muted:#b09f8e;
+    --line:#3a2c20; --accent:#e6a86f; --accent2:#e08a6a; --accent-soft:#382519;
+    --chip:#2e2118; --ok:#8cc29a; --ok-bg:#1f2c21; --warn:#e6b878; --warn-bg:#332717;
+    --bad:#e09684; --bad-bg:#331e18; --glow:rgba(230,150,105,.16); --glow2:rgba(205,95,85,.10);
+    --gold:#e9c07a; --map-bg:#1c130b; --map-grid:rgba(230,150,105,.10); --map-block:rgba(230,150,105,.10);
+    --map-road:#2c2117; --map-water:#27323d; --map-park:#243425; --map-tree:#557a4b;
+    --shadow:0 1px 2px rgba(0,0,0,.45),0 22px 60px rgba(0,0,0,.55);
+  }
+  [data-theme="light"]{
+    color-scheme: light;
+    --bg:#fbf6f0; --bg2:#fff; --card:#fff; --card2:#fcf7f1;
+    --ink:#2c2521; --muted:#8a7d70;
+    --line:#efe5d9; --accent:#b14e34; --accent2:#c06a4a; --accent-soft:#f7e8e0;
+    --chip:#f5ede3; --ok:#3a7a4e; --ok-bg:#e8f3ea; --warn:#8a6a16; --warn-bg:#fbf0db;
+    --bad:#9a3a28; --bad-bg:#f7e8e4; --glow:rgba(193,106,74,.08); --glow2:rgba(176,122,22,.05);
+    --gold:#c79a3e; --map-bg:#f6eee2; --map-grid:rgba(177,78,52,.12); --map-block:rgba(177,78,52,.10);
+    --map-road:#fffaf2; --map-water:#cfe0e7; --map-park:#e2ecd2; --map-tree:#8aad66;
+    --shadow:0 1px 3px rgba(0,0,0,.05),0 12px 34px rgba(0,0,0,.07);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:
+      radial-gradient(1100px 560px at 50% -8%, var(--glow), transparent 64%),
+      radial-gradient(820px 520px at 105% 102%, var(--glow2), transparent 58%),
+      var(--bg);
+    background-attachment:fixed;
+    color:var(--ink); min-height:100vh;
+    font:16px/1.6 'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Fraunces',Georgia,serif}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  a{color:var(--accent)}
+  /* top bar */
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0 6px}
+  .brand{font-family:'Fraunces',serif;font-size:23px;font-weight:600;letter-spacing:.3px;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+  .toggle{border:1px solid var(--line);background:var(--card);color:var(--muted);
+    border-radius:30px;padding:7px 14px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:7px}
+  .toggle:hover{color:var(--ink)}
+  /* hero */
+  .hero{padding:34px 0 14px;max-width:660px}
+  .greet{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    font-weight:600;margin:0 0 14px;display:flex;align-items:center;gap:7px}
+  .greet .heart{color:#e23744;font-size:15px;animation:heartbeat 1.6s ease-in-out infinite}
+  @keyframes heartbeat{0%,100%{transform:scale(1)}45%{transform:scale(1.22)}60%{transform:scale(1.05)}}
+  .hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5.6vw,54px);
+    line-height:1.05;letter-spacing:-.6px;margin:0 0 16px}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p{color:var(--muted);font-size:18px;line-height:1.55;margin:0;max-width:560px}
+  /* panel */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:28px;margin-top:28px}
+  .step-label{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:0 0 18px}
+  /* occasion cards */
+  .occ-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(min-width:640px){.occ-grid{grid-template-columns:repeat(3,1fr)}}
+  .occ{display:flex;flex-direction:column;gap:4px;text-align:left;cursor:pointer;
+    background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 18px 19px;
+    transition:border-color .15s,transform .1s,background .15s;color:inherit;font:inherit}
+  .occ:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .occ.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent) inset}
+  .occ .ic{width:46px;height:46px;border-radius:50%;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:11px;transition:background .15s}
+  .occ.sel .ic{background:var(--card)}
+  .occ .ic svg{width:24px;height:24px;fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .occ .nm{font-family:'Fraunces',serif;font-size:18px;font-weight:600}
+  .occ .ds{font-size:12.5px;color:var(--muted);line-height:1.4}
+  /* details (progressive) */
+  .details{max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .35s ease,margin .3s}
+  .details.open{max-height:1600px;opacity:1;margin-top:26px}
+  .field{margin-top:24px}
+  .field>label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);margin:0 0 11px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--card2);color:var(--ink);
+    border-radius:30px;padding:7px 14px;font-size:14px;cursor:pointer;transition:all .12s;font:inherit;line-height:1.2}
+  .chip:hover{border-color:var(--accent)}
+  .chip.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+  [data-theme="dark"] .chip.sel{color:#1a130d}
+  .inline{display:flex;gap:18px;flex-wrap:wrap}
+  .inline>div{flex:1;min-width:150px}
+  input[type=date],input[type=time],input[type=text]{width:100%;padding:9px 12px;border:1px solid var(--line);
+    border-radius:10px;background:var(--bg2);color:var(--ink);font:inherit;font-size:15px}
+  .hidden{display:none}
+  .stepper{display:inline-flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:30px;overflow:hidden}
+  .stepper button{border:0;background:var(--card2);color:var(--ink);width:38px;height:38px;font-size:18px;cursor:pointer}
+  .stepper button:hover{background:var(--accent-soft)}
+  .stepper span{min-width:42px;text-align:center;font-variant-numeric:tabular-nums;font-size:15px}
+  .vibe-wrap input[type=range]{width:100%;accent-color:var(--accent)}
+  .vibe-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:3px}
+  .go{margin-top:22px;background:var(--accent);color:#fff;border:0;border-radius:12px;
+    padding:14px 26px;font-size:16px;font-weight:600;cursor:pointer;font-family:'Fraunces',serif;
+    letter-spacing:.2px;box-shadow:0 6px 20px var(--glow)}
+  [data-theme="dark"] .go{color:#1a130d}
+  .go:hover{filter:brightness(1.05)}
+  .go:disabled{opacity:.5;cursor:default}
+  .subnote{font-size:12.5px;color:var(--muted);margin:10px 2px 0}
+  /* results */
+  #results{margin-top:8px}
+  .res-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:30px 2px 6px}
+  .res-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin:0;letter-spacing:-.3px}
+  .res-head .sub{color:var(--muted);font-size:13.5px}
+  .refine{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 2px 20px}
+  .refine .rlabel{font-size:12.5px;color:var(--muted);margin-right:2px}
+  .cards{display:grid;gap:20px}
+  @media(min-width:760px){.cards{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);cursor:pointer;position:relative;overflow:hidden;
+    transition:transform .1s,border-color .15s}
+  .card:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .card.backup{background:var(--card2);border-style:dashed}
+  .map{position:relative;width:100%;height:150px;display:block;border-bottom:1px solid var(--line)}
+  .map svg{display:block;width:100%;height:100%}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;padding:10px 24px 0;font-size:12px;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+  .cardbody{padding:18px 24px 22px}
+  .badge{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;letter-spacing:.04em;z-index:2;
+    color:var(--accent);background:var(--card);padding:5px 11px;border-radius:20px;border:1px solid var(--line)}
+  .cardname{font-family:'Fraunces',serif;font-size:24px;font-weight:600;margin:0;letter-spacing:-.3px;line-height:1.12}
+  .meta{color:var(--muted);font-size:13.5px;margin:7px 0 0}
+  .mich{color:var(--accent2);font-weight:600}
+  /* vibe arc */
+  .arc{display:flex;align-items:center;gap:8px;margin:14px 0 2px;flex-wrap:wrap}
+  .arc .node{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .arc .node b{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;opacity:.9}
+  .arc .arr{color:var(--line);font-size:13px}
+  .why{font-size:14.5px;line-height:1.5;margin:12px 0 0;color:var(--ink)}
+  .avail{display:inline-block;font-size:12.5px;margin:12px 0 0;padding:4px 10px;border-radius:8px}
+  .avail.ok{background:var(--ok-bg);color:var(--ok)} .avail.warn{background:var(--warn-bg);color:var(--warn)}
+  .avail.bad{background:var(--bad-bg);color:var(--bad)} .avail.muted{background:var(--chip);color:var(--muted)}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;
+    border-top:1px solid var(--line);padding-top:11px;font-size:13px;color:var(--muted)}
+  /* gems */
+  .gems{margin-top:30px}
+  .gems h2{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:0 0 6px}
+  .gem{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+  .gem .gi{font-weight:600}
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(10,7,4,.62);display:none;align-items:flex-start;
+    justify-content:center;padding:30px 16px;overflow:auto;z-index:30;backdrop-filter:blur(3px)}
+  .overlay.open{display:flex}
+  .modal{background:var(--card);border:1px solid var(--line);border-radius:18px;max-width:640px;width:100%;
+    box-shadow:var(--shadow);padding:28px}
+  .modal h3{font-family:'Fraunces',serif;font-weight:600;margin:0 0 3px;font-size:27px;letter-spacing:-.3px}
+  .close{float:right;border:0;background:var(--chip);border-radius:9px;width:34px;height:34px;font-size:19px;cursor:pointer;color:var(--muted)}
+  .timeline{list-style:none;padding:0;margin:20px 0}
+  .timeline li{display:flex;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .timeline .t{font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent);min-width:54px}
+  .leg{margin:16px 0;padding:15px;border:1px solid var(--line);border-radius:12px;background:var(--card2)}
+  .leg .lk{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .leg .ln{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-top:1px}
+  .book{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;text-decoration:none;
+    padding:8px 15px;border-radius:9px;font-size:13px;font-weight:600;border:0;cursor:pointer}
+  [data-theme="dark"] .book{color:#1a130d}
+  .note{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .src{font-style:italic;opacity:.8}
+  .err{background:var(--bad-bg);color:var(--bad);padding:13px 15px;border-radius:11px;margin-top:20px}
+  .center{text-align:center;color:var(--muted);padding:48px 0}
+  .spin{width:28px;height:28px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;
+    animation:spin .8s linear infinite;margin:0 auto 14px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .chip-x{margin-left:6px;opacity:.7}
+  #leafmap{height:220px;margin-top:14px;border-radius:12px;border:1px solid var(--line);overflow:hidden;background:var(--map-bg)}
+  #leafmap .leaflet-control-attribution{font-size:10px;background:rgba(0,0,0,.35);color:#ddd}
+  #leafmap .leaflet-control-attribution a{color:#eab}
+  [data-theme="light"] #leafmap .leaflet-control-attribution{background:rgba(255,255,255,.7);color:#555}
+  [data-theme="light"] #leafmap .leaflet-control-attribution a{color:var(--accent)}
+  .invite-btn{position:absolute;top:14px;left:14px;z-index:2;display:flex;align-items:center;gap:6px;
+    background:var(--card);border:1px solid var(--line);color:var(--accent);font:600 12px Inter,sans-serif;
+    padding:6px 11px;border-radius:20px;cursor:pointer}
+  .invite-btn:hover{border-color:var(--accent)}
+  .invite-btn svg{width:14px;height:14px;fill:none;stroke:var(--accent);stroke-width:1.6}
+  .invite-modal{background:var(--card);border:1px solid var(--line);border-radius:18px;max-width:560px;
+    width:100%;box-shadow:var(--shadow);padding:22px}
+  .invite-modal h3{font-family:'Fraunces',serif;font-weight:600;margin:0 0 14px;font-size:22px}
+  .invite-preview{display:flex;justify-content:center;margin:4px 0 16px}
+  .invite-preview svg{width:100%;max-width:420px;height:auto;border-radius:10px;box-shadow:0 10px 34px rgba(0,0,0,.32)}
+  .invite-controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .invite-controls input{flex:1;min-width:150px}
+  .invite-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .invite-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin:18px 0 4px;
+    padding:16px 18px;border:0;border-radius:14px;cursor:pointer;color:#fff;
+    font-family:'Fraunces',serif;font-size:17px;font-weight:600;letter-spacing:.3px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    box-shadow:0 10px 30px var(--glow);transition:transform .1s,filter .15s}
+  [data-theme="dark"] .invite-cta{color:#1a130d}
+  .invite-cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .invite-cta svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}
+  /* guided tour */
+  .tour-ring{position:fixed;z-index:60;border-radius:14px;pointer-events:none;
+    box-shadow:0 0 0 9999px rgba(8,5,3,.66);outline:2px solid var(--accent);outline-offset:3px;
+    transition:top .4s cubic-bezier(.4,0,.2,1),left .4s cubic-bezier(.4,0,.2,1),width .4s,height .4s}
+  .tour-ring::after{content:"";position:absolute;inset:-3px;border-radius:15px;
+    animation:tourpulse 1.7s ease-out infinite}
+  @keyframes tourpulse{0%{box-shadow:0 0 0 0 rgba(230,150,105,.55)}
+    70%{box-shadow:0 0 0 16px rgba(230,150,105,0)}100%{box-shadow:0 0 0 0 rgba(230,150,105,0)}}
+  .tour-tip{position:fixed;z-index:62;max-width:300px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;animation:tipIn .35s ease both}
+  .tour-tip.center{left:50%;top:50%;transform:translate(-50%,-50%);max-width:340px;text-align:center}
+  @keyframes tipIn{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+  .tour-tip.center{animation:popIn .4s ease both}
+  @keyframes popIn{from{opacity:0;transform:translate(-50%,-46%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  .tour-tip h4{font-family:'Fraunces',serif;margin:0 0 7px;font-size:18px;font-weight:600}
+  .tour-tip p{margin:0 0 14px;font-size:13.5px;color:var(--muted);line-height:1.55}
+  .tour-tip .trow{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .tour-tip.center .trow{justify-content:center}
+  .tour-tip .steps{font-size:12px;color:var(--muted)}
+  .tour-tip button{font:inherit;cursor:pointer;border-radius:9px;padding:8px 16px;font-size:13px;font-weight:600;
+    border:1px solid var(--accent);background:var(--accent);color:#fff}
+  [data-theme="dark"] .tour-tip button{color:#1a130d}
+  .tour-tip button.skip{border:0;background:none;color:var(--muted);font-weight:400;padding:8px 6px}
+  .hintpulse{animation:hintpulse 1.5s ease-in-out infinite}
+  @keyframes hintpulse{0%,100%{box-shadow:var(--shadow),0 0 0 0 rgba(230,150,105,0)}
+    50%{box-shadow:var(--shadow),0 0 0 8px rgba(230,150,105,.22)}}
+  .ctapulse{animation:ctapulse 1.1s ease-in-out infinite}
+  @keyframes ctapulse{0%,100%{transform:none}50%{transform:scale(1.025)}}
+  .toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);z-index:55;display:flex;gap:12px;
+    align-items:center;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);
+    border-radius:30px;padding:11px 12px 11px 20px;font-size:13.5px;color:var(--ink);animation:tipIn .35s both}
+  .toast button{border:0;background:var(--chip);color:var(--muted);border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:15px}
+  .topbtns{display:flex;gap:8px;align-items:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div class="brand"><span class="dot"></span><span class="serif">Evening</span></div>
+    <div class="topbtns">
+      <button class="toggle" onclick="startTour(true)" aria-label="Show me how it works"><span>?</span><span>Tour</span></button>
+      <button class="toggle" id="themeBtn" onclick="toggleTheme()"><span id="themeIcon">☾</span><span id="themeTxt">Evening</span></button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <p class="greet">Hello, Erica <span class="heart">♥</span></p>
+    <h1 class="serif">Plan a night<br>worth <em>remembering</em>.</h1>
+    <p>From a first date to your tenth anniversary — tell me the occasion, and I'll
+      find the place, the table, and the whole evening around it.</p>
+  </div>
+
+  <!-- INTAKE -->
+  <div class="panel">
+    <p class="step-label">What's the occasion?</p>
+    <div class="occ-grid" id="occGrid"></div>
+
+    <div class="details" id="details">
+      <div class="field">
+        <label>When</label>
+        <div class="chips" id="dateChips"></div>
+        <div class="inline" style="margin-top:12px">
+          <div id="datePickWrap" class="hidden"><input type="date" id="dateInput"></div>
+          <div><label class="subnote" style="margin:0 0 6px">Time</label>
+            <div class="chips" id="timeChips"></div></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="inline">
+          <div>
+            <label>Party size</label>
+            <div class="stepper"><button type="button" onclick="stepParty(-1)">−</button>
+              <span id="partyVal">2</span><button type="button" onclick="stepParty(1)">+</button></div>
+          </div>
+          <div>
+            <label>Budget</label>
+            <div class="chips" id="budgetChips"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Where</label>
+        <div class="chips" id="whereChips"></div>
+        <div id="hoodWrap" class="hidden" style="margin-top:12px">
+          <div class="chips" id="hoodChips"></div>
+        </div>
+      </div>
+
+      <div class="field vibe-wrap">
+        <label>Vibe</label>
+        <input type="range" id="vibe" min="-100" max="100" value="0">
+        <div class="vibe-ends"><span>Chill &amp; casual</span><span>Special &amp; memorable</span></div>
+      </div>
+
+      <div class="field">
+        <label>Dietary <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+        <div class="chips" id="dietChips"></div>
+      </div>
+
+      <div class="field">
+        <div class="inline">
+          <div><label>Cuisines you love</label><input type="text" id="likes" placeholder="italian, japanese…"></div>
+          <div><label>Anything to avoid</label><input type="text" id="avoids" placeholder="steakhouse…"></div>
+        </div>
+      </div>
+
+      <button class="go" id="submit" onclick="submitForm()">Plan my evening</button>
+      <p class="subnote">Just pick an occasion and go — everything else is optional.</p>
+    </div>
+  </div>
+
+  <div id="results"></div>
+</div>
+
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+<div class="overlay" id="inviteOverlay"><div class="invite-modal" id="inviteModal"></div></div>
+
+<script>
+const API_BASE = new URLSearchParams(location.search).get("api")
+  || (location.port === "8000" ? "" : "http://127.0.0.1:8000");
+
+/* ---------- theme ---------- */
+function setTheme(t){
+  document.documentElement.setAttribute("data-theme", t);
+  document.getElementById("themeIcon").textContent = t==="dark" ? "☾" : "☀";
+  document.getElementById("themeTxt").textContent = t==="dark" ? "Evening" : "Daylight";
+  try{ localStorage.setItem("evening-theme", t); }catch(e){}
+}
+function toggleTheme(){ setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark"); }
+setTheme((()=>{ try{return localStorage.getItem("evening-theme")}catch(e){} })() || "dark");
+
+/* ---------- data ---------- */
+const OCCASIONS = [
+  ["first_date","First date","Easy, talkable, low pressure"],
+  ["second_date","Date night","A lovely step up"],
+  ["anniversary","Anniversary","Memorable & worth a splurge"],
+  ["proposal","Proposal","Private, special, a moment"],
+  ["business","Business","Quiet, central, reliable"],
+  ["group","Celebration","Lively, fun, for a group"],
+];
+const svg = p => `<svg viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
+const ICONS = {
+  // two glasses meeting — a toast to a first date
+  first_date: svg('<path d="M7 3l1.4 6.2a2.6 2.6 0 0 0 5.1 0M7 3h4.5M9 12v8M6.5 20h5"/><path d="M17 3l-1.4 6.2a2.6 2.6 0 0 1-1.6 1.9"/>'),
+  // a single wine glass
+  second_date: svg('<path d="M8 3.5h8l-.7 6.5a3.3 3.3 0 0 1-6.6 0L8 3.5zM12 13.4V20M8.8 20h6.4"/>'),
+  // sparkle / champagne shimmer
+  anniversary: svg('<path d="M12 3.5l1.7 4.8 4.8 1.7-4.8 1.7L12 16.5l-1.7-4.8L5.5 10l4.8-1.7z"/><path d="M18.5 15l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6z"/>'),
+  // a ring with a gem
+  proposal: svg('<circle cx="12" cy="15" r="5.4"/><path d="M8.7 6.3 12 3l3.3 3.3L12 9.1z"/>'),
+  // briefcase
+  business: svg('<rect x="3.5" y="8" width="17" height="11" rx="1.6"/><path d="M9 8V6.4A1.6 1.6 0 0 1 10.6 4.8h2.8A1.6 1.6 0 0 1 15 6.4V8M3.5 12.5h17"/>'),
+  // two people
+  group: svg('<circle cx="9" cy="8.5" r="3"/><path d="M3.8 19a5.2 5.2 0 0 1 10.4 0M16 6.2a2.6 2.6 0 0 1 0 5.1M17 13.6a4.6 4.6 0 0 1 3.2 5.4"/>'),
+};
+const BUDGETS = [["","Any"],["1","$"],["2","$$"],["3","$$$"],["4","$$$$"]];
+const TIMES = ["18:00","18:30","19:00","19:30","20:00","20:30"];
+const DIETS = [["vegetarian","Vegetarian"],["vegan","Vegan"],["gluten_free","Gluten-free"]];
+const MANHATTAN = ["West Village","Greenwich Village","East Village","Lower East Side","Nolita","Soho","Tribeca","Flatiron","Gramercy","NoMad","Chelsea","Midtown","Midtown East","Columbus Circle","Upper East Side","Upper West Side","FiDi"];
+const BROOKLYN = ["Williamsburg","Dumbo","Greenpoint","Fort Greene","Prospect Heights","Park Slope"];
+const ALL_HOODS = [...MANHATTAN, ...BROOKLYN];
+const PLATFORM_LABEL = {resy:"Resy",opentable:"OpenTable",tock:"Tock",phone_only:"call to book",walk_in:"walk-in"};
+const OCC_LABEL = {first_date:"first date",second_date:"date night",anniversary:"anniversary",proposal:"proposal",business:"business dinner",group:"celebration"};
+
+const CORRECTIONS = [
+  ["more_casual","More casual",{formality:-2.5,special_factor:-1.5,ambiance:-1,price_high:-1}],
+  ["more_special","More special",{special_factor:2.5,ambiance:2,view:1,formality:.5}],
+  ["louder_ok","Louder is fine",{noise:2.5}],
+  ["quieter","Quieter",{noise:-2.5,conversation:1}],
+  ["cheaper","Cheaper",{price_high:-3}],
+];
+
+/* ---------- state ---------- */
+let S = { occasion:null, dateMode:"none", date:null, time:"19:30", party:2,
+          budget:"", where:"any", hoods:new Set(), vibe:0, diets:new Set() };
+let LAST=null, CURRENT_PLAN=null;
+let activeCorr = new Set();
+
+/* ---------- build intake ---------- */
+const occGrid = document.getElementById("occGrid");
+OCCASIONS.forEach(([v,nm,ds])=>{
+  const b=document.createElement("button"); b.className="occ"; b.dataset.v=v;
+  b.innerHTML=`<span class="ic">${ICONS[v]}</span><span class="nm">${nm}</span><span class="ds">${ds}</span>`;
+  b.onclick=()=>{ S.occasion=v;
+    [...occGrid.children].forEach(c=>c.classList.toggle("sel",c.dataset.v===v));
+    document.getElementById("details").classList.add("open"); };
+  occGrid.appendChild(b);
+});
+
+function chipRow(host, items, getActive, onPick){
+  host.innerHTML="";
+  items.forEach(([val,label])=>{
+    const c=document.createElement("button"); c.type="button"; c.className="chip"; c.textContent=label;
+    if(getActive(val)) c.classList.add("sel");
+    c.onclick=()=>{ onPick(val); };
+    host.appendChild(c);
+  });
+}
+
+// date chips
+function nextDOW(target){ const d=new Date(); let diff=(target-d.getDay()+7)%7; if(diff===0)diff=0; d.setDate(d.getDate()+diff); return d; }
+function iso(d){ return d.toISOString().slice(0,10); }
+const DATE_OPTS=[["none","Flexible"],["today","Tonight"],["fri","This Fri"],["sat","This Sat"],["pick","Pick a date"]];
+function renderDateChips(){
+  chipRow(document.getElementById("dateChips"), DATE_OPTS, v=>S.dateMode===v, v=>{
+    S.dateMode=v;
+    if(v==="none"){S.date=null;}
+    else if(v==="today"){S.date=iso(new Date());}
+    else if(v==="fri"){S.date=iso(nextDOW(5));}
+    else if(v==="sat"){S.date=iso(nextDOW(6));}
+    document.getElementById("datePickWrap").classList.toggle("hidden", v!=="pick");
+    if(v==="pick"){ const di=document.getElementById("dateInput"); S.date=di.value||null; }
+    renderDateChips();
+  });
+}
+document.getElementById("dateInput").addEventListener("change",e=>{ S.date=e.target.value||null; });
+renderDateChips();
+function renderTime(){ chipRow(document.getElementById("timeChips"), TIMES.map(t=>[t,t]), v=>S.time===v, v=>{S.time=v;renderTime();}); }
+renderTime();
+
+chipRow(document.getElementById("budgetChips"), BUDGETS, v=>S.budget===v, v=>{S.budget=v;renderBudget();});
+function renderBudget(){ chipRow(document.getElementById("budgetChips"), BUDGETS, v=>S.budget===v, v=>{S.budget=v;renderBudget();}); }
+
+const WHERE_OPTS=[["any","Anywhere"],["manhattan","Manhattan"],["brooklyn","Brooklyn"],["pick","Pick areas"]];
+function renderWhere(){
+  chipRow(document.getElementById("whereChips"), WHERE_OPTS, v=>S.where===v, v=>{
+    S.where=v; S.hoods.clear();
+    document.getElementById("hoodWrap").classList.toggle("hidden", v!=="pick");
+    renderWhere(); if(v==="pick") renderHoods();
+  });
+}
+renderWhere();
+function renderHoods(){
+  chipRow(document.getElementById("hoodChips"), ALL_HOODS.map(h=>[h,h]), v=>S.hoods.has(v), v=>{
+    S.hoods.has(v)?S.hoods.delete(v):S.hoods.add(v); renderHoods();
+  });
+}
+
+function renderDiet(){
+  chipRow(document.getElementById("dietChips"), DIETS, v=>S.diets.has(v), v=>{
+    S.diets.has(v)?S.diets.delete(v):S.diets.add(v); renderDiet();
+  });
+}
+renderDiet();
+
+document.getElementById("vibe").addEventListener("input",e=>{ S.vibe=+e.target.value/100; });
+function stepParty(d){ S.party=Math.max(1,Math.min(20,S.party+d)); document.getElementById("partyVal").textContent=S.party; }
+
+/* ---------- submit ---------- */
+function splitList(s){ return s.split(",").map(x=>x.trim()).filter(Boolean); }
+function neighborhoods(){
+  if(S.where==="manhattan") return MANHATTAN;
+  if(S.where==="brooklyn") return BROOKLYN;
+  if(S.where==="pick") return [...S.hoods];
+  return [];
+}
+function buildBrief(){
+  const adj={};
+  activeCorr.forEach(k=>{ const c=CORRECTIONS.find(x=>x[0]===k); if(c) for(const [f,d] of Object.entries(c[2])) adj[f]=(adj[f]||0)+d; });
+  return {
+    occasion:S.occasion, party_size:S.party,
+    budget_max_tier:S.budget?+S.budget:null,
+    neighborhoods:neighborhoods(),
+    cuisine_likes:splitList(document.getElementById("likes").value),
+    cuisine_avoids:splitList(document.getElementById("avoids").value),
+    dietary:[...S.diets], vibe:S.vibe, date:S.date, time:S.time,
+    adjust:adj, use_llm:false,
+  };
+}
+async function submitForm(){
+  if(!S.occasion){ return; }
+  const btn=document.getElementById("submit"); btn.disabled=true; btn.textContent="Setting the table…";
+  const out=document.getElementById("results");
+  out.innerHTML=`<div class="panel center"><div class="spin"></div>Finding places, checking what's walkable and bookable, writing the reasoning…</div>`;
+  try{
+    const res=await fetch(API_BASE+"/plan",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(buildBrief())});
+    LAST=await res.json(); renderResults();
+    out.scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(err){
+    out.innerHTML=`<div class="err">Couldn't reach the planner at <code>${API_BASE||location.origin}</code>. Is the backend running? <span class="note">(${err.message})</span></div>`;
+  }finally{ btn.disabled=false; btn.textContent="Plan my evening"; }
+}
+
+async function reRunWithCorrections(){
+  const out=document.getElementById("results");
+  const bar=document.getElementById("refineBar");
+  if(bar) bar.style.opacity=".5";
+  try{
+    const res=await fetch(API_BASE+"/plan",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(buildBrief())});
+    LAST=await res.json(); renderResults();
+  }catch(err){ /* keep prior */ }
+}
+
+/* ---------- render ---------- */
+function dollars(t){ return "$".repeat(t); }
+function michelin(m){ if(!m) return ""; const n={bib_gourmand:0,"1_star":1,"2_star":2,"3_star":3}[m]??0;
+  return m==="bib_gourmand"?"Bib Gourmand":"★".repeat(n)+" Michelin"; }
+function availLine(a){
+  if(!a) return "";
+  switch(a.status){
+    case "available": return `<span class="avail ok">Tables ${a.slots.join(" · ")}</span>`;
+    case "limited": return `<span class="avail warn">Limited — ${a.slots.join(", ")} only</span>`;
+    case "walk_in": return `<span class="avail ok">Walk-in, no reservation</span>`;
+    case "not_checked": return `<span class="avail muted">Pick a date for live availability</span>`;
+    case "released_on_schedule": return `<span class="avail warn">${a.note}</span>`;
+    case "phone_only": return `<span class="avail warn">${a.note}</span>`;
+    default: return `<span class="avail bad">${a.note||"Unavailable"}</span>`;
+  }
+}
+function arcHtml(arc){
+  if(!arc||!arc.length) return "";
+  return `<div class="arc">`+arc.map((w,i)=>`<span class="node"><b></b>${w}</span>`+(i<arc.length-1?`<span class="arr">→</span>`:"")).join("")+`</div>`;
+}
+
+function renderResults(){
+  const out=document.getElementById("results");
+  if(!LAST || LAST.error){ out.innerHTML=`<div class="err">${LAST?.error||"Something went wrong."}</div>`; return; }
+  const plans=LAST.plans||[];
+  if(!plans.length){ out.innerHTML=`<div class="panel center">No matches with those constraints. Try widening the budget, area, or dietary filters.</div>`; return; }
+  const occ=OCC_LABEL[LAST.brief.occasion]||"evening";
+  let html=`<div class="res-head"><h2 class="serif">${plans.length} evening${plans.length>1?"s":""} for your ${occ}</h2>
+    <span class="sub">${LAST.eligible_after_filters} spots considered${LAST.checked_for?.date?` · ${LAST.checked_for.date}`:""}</span></div>`;
+  // refine bar
+  html+=`<div class="refine" id="refineBar"><span class="rlabel">Refine:</span>`+
+    CORRECTIONS.map(([k,label])=>`<button class="chip ${activeCorr.has(k)?'sel':''}" onclick="toggleCorr('${k}')">${label}${activeCorr.has(k)?' <span class="chip-x">×</span>':''}</button>`).join("")+`</div>`;
+  html+=`<div class="cards">`+plans.map((p,i)=>cardHtml(p,i,false)).join("")+`</div>`;
+  if(LAST.backup) html+=`<div class="res-head" style="margin-top:26px"><h2 class="serif" style="font-size:20px">A backup, just in case</h2></div><div class="cards">`+cardHtml(LAST.backup,"b",true)+`</div>`;
+  const gems=LAST.unavailable_gems||[];
+  if(gems.length){
+    html+=`<div class="gems"><h2 class="serif">Also worth knowing — couldn't book these for your date</h2>`;
+    gems.forEach(g=>{ const m=g.michelin?` · <span class="mich">${michelin(g.michelin)}</span>`:"";
+      html+=`<div class="gem"><div><span class="gi serif">${g.name}</span>
+        <span class="note" style="margin:0"> · ${g.neighborhood} · ${dollars(g.price_tier)}${m}</span>
+        <div class="note" style="margin-top:2px">${g.availability.note}</div></div>
+        <a class="book" target="_blank" rel="noopener" href="${g.booking?.url||'#'}">Details</a></div>`; });
+    html+=`</div>`;
+  }
+  out.innerHTML=html;
+  maybeCardHint();
+}
+
+function toggleCorr(k){ activeCorr.has(k)?activeCorr.delete(k):activeCorr.add(k); reRunWithCorrections(); }
+
+const STOP_META = {
+  pre:  {label:"Drinks", color:"var(--gold)",    r:8},
+  din:  {label:"Dinner", color:"var(--accent)",  r:11},
+  post: {label:"After",  color:"var(--accent2)", r:8},
+};
+function shortName(n){ return n.length>20 ? n.slice(0,19)+"…" : n; }
+
+// decorative scenery — deterministic (no flicker). uid keeps filter ids unique;
+// hood is the dinner neighborhood, shown as a faint district label.
+function mapDecor(uid, hood){
+  return `
+  <defs><filter id="g${uid}" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="n"/>
+    <feColorMatrix in="n" type="saturate" values="0"/></filter></defs>
+  <path d="M452 -15 Q 486 30 530 42 Q 586 58 614 112 L 642 112 L 642 -15 Z" fill="var(--map-water)" opacity=".9"/>
+  <g stroke="var(--map-bg)" stroke-width="1.4" fill="none" opacity=".5" stroke-linecap="round">
+    <path d="M512 22 q 9 -5 18 0"/><path d="M548 44 q 9 -5 18 0"/><path d="M520 60 q 9 -5 18 0"/></g>
+  <path d="M-12 102 Q 24 92 58 99 Q 102 108 110 138 Q 113 168 66 173 Q 16 176 -12 166 Z" fill="var(--map-park)"/>
+  <g fill="var(--map-tree)"><rect x="22" y="114" width="3" height="8"/><circle cx="23.5" cy="112" r="7"/>
+    <rect x="52" y="108" width="3" height="9"/><circle cx="53.5" cy="106" r="8"/>
+    <rect x="82" y="120" width="3" height="7"/><circle cx="83.5" cy="118" r="6"/></g>
+  <g><rect x="-6" y="68" width="612" height="15" fill="var(--map-road)"/>
+     <rect x="296" y="-6" width="15" height="162" fill="var(--map-road)"/>
+     <line x1="-6" y1="75.5" x2="606" y2="75.5" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="9 11" opacity=".3"/>
+     <text x="150" y="79" font-family="Inter,sans-serif" font-size="8.5" font-weight="600" letter-spacing="2.5"
+       fill="var(--muted)" opacity=".75">RESTAURANT ROW</text>
+     <text x="303" y="79" text-anchor="middle" transform="rotate(-90 303 79)" font-family="Inter,sans-serif"
+       font-size="8.5" font-weight="600" letter-spacing="2.5" fill="var(--muted)" opacity=".75">PARK AVE</text></g>
+  <g opacity=".9">
+    <rect x="44" y="26" width="30" height="26" rx="3" fill="var(--map-block)"/>
+    <path d="M42 26 L59 13 L76 26 Z" fill="var(--accent2)" opacity=".5"/>
+    <rect x="84" y="34" width="22" height="20" rx="3" fill="var(--map-block)"/>
+    <path d="M82 34 L95 24 L108 34 Z" fill="var(--accent2)" opacity=".45"/>
+    <rect x="214" y="104" width="34" height="30" rx="3" fill="var(--map-block)"/>
+    <path d="M212 104 L231 91 L250 104 Z" fill="var(--accent2)" opacity=".45"/></g>
+  <text x="300" y="140" text-anchor="middle" font-family="Fraunces,serif" font-style="italic"
+    font-size="20" fill="var(--accent)" opacity=".12">${hood||""}</text>
+  <g transform="translate(566,26)" opacity=".75">
+    <circle r="13" fill="var(--map-bg)" stroke="var(--accent)" stroke-width="1.2"/>
+    <path d="M0 -9 L4 4 L0 1 L-4 4 Z" fill="var(--accent)"/>
+    <text x="0" y="-15.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="var(--accent)">N</text>
+  </g>`;
+}
+
+function pinSvg(x,y,r,color,num,big){
+  const ny=y-r*1.35;                                   // head centre sits above the tip
+  return `<ellipse cx="${x}" cy="${(y+1).toFixed(1)}" rx="${r*.8}" ry="${r*.3}" fill="rgba(0,0,0,.28)"/>
+    <path d="M${x} ${y} C ${x-r} ${(y-r*1.1).toFixed(1)} ${x-r} ${(y-r*2.5).toFixed(1)} ${x} ${(y-r*2.5).toFixed(1)}
+      C ${x+r} ${(y-r*2.5).toFixed(1)} ${x+r} ${(y-r*1.1).toFixed(1)} ${x} ${y} Z"
+      fill="${color}" stroke="rgba(0,0,0,.18)" stroke-width="1"/>
+    <circle cx="${x}" cy="${ny.toFixed(1)}" r="${(r*.55).toFixed(1)}" fill="rgba(255,255,255,.85)"/>
+    <text x="${x}" y="${(ny+0.5).toFixed(1)}" text-anchor="middle" dominant-baseline="central"
+      font-family="Inter,sans-serif" font-size="${big?11:9}" font-weight="700" fill="#1a130d">${num}</text>`;
+}
+
+function routeMap(p){
+  const W=600,H=150,M=46;
+  const stops=[];
+  if(p.pre)  stops.push({...p.pre, role:"pre"});
+  stops.push({...p.dinner, role:"din"});
+  if(p.post) stops.push({...p.post, role:"post"});
+  const pr=stops.map(s=>({mx:s.lng*Math.cos(s.lat*Math.PI/180), my:s.lat, s}));
+  const xs=pr.map(o=>o.mx), ys=pr.map(o=>o.my);
+  const cx=(Math.min(...xs)+Math.max(...xs))/2, cy=(Math.min(...ys)+Math.max(...ys))/2;
+  const DEGMIN=0.0035;
+  const spanX=Math.max(Math.max(...xs)-Math.min(...xs),DEGMIN);
+  const spanY=Math.max(Math.max(...ys)-Math.min(...ys),DEGMIN);
+  const sc=Math.min((W-2*M)/spanX,(H-2*M)/spanY);
+  const P=pr.map(o=>[ W/2+(o.mx-cx)*sc, H/2-(o.my-cy)*sc ]);
+  // hand-drawn wavy walking path (quadratic, alternating wobble)
+  let route="";
+  if(P.length>1){
+    let d=`M${P[0][0].toFixed(1)} ${P[0][1].toFixed(1)}`;
+    for(let i=1;i<P.length;i++){
+      const [x0,y0]=P[i-1],[x1,y1]=P[i];
+      const mx=(x0+x1)/2,my=(y0+y1)/2,dx=x1-x0,dy=y1-y0,len=Math.hypot(dx,dy)||1;
+      const off=13*(i%2?1:-1);
+      d+=` Q ${(mx-dy/len*off).toFixed(1)} ${(my+dx/len*off).toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}`;
+    }
+    route=`<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"
+      stroke-dasharray="1 9" opacity=".85"/>`;
+  }
+  const pins=stops.map((s,i)=>{
+    const mta=STOP_META[s.role], [x,y]=P[i];
+    return pinSvg(+x.toFixed(1),+y.toFixed(1),s.role==="din"?13:10,mta.color,i+1,s.role==="din");
+  }).join("");
+  const legend=stops.map((s,i)=>{
+    const mta=STOP_META[s.role];
+    return `<span><i style="background:${mta.color}"></i>${i+1}. ${mta.label}: ${shortName(s.name)}</span>`;
+  }).join("");
+  const uid=(p.id||"x").replace(/\W/g,"");
+  return `<div class="map"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+      <rect width="${W}" height="${H}" fill="var(--map-bg)"/>
+      ${mapDecor(uid, p.dinner.neighborhood)}
+      <rect width="${W}" height="${H}" filter="url(#g${uid})" opacity=".05"/>
+      ${route}${pins}
+    </svg></div><div class="legend">${legend}</div>`;
+}
+
+function cardHtml(p,idx,backup){
+  const d=p.dinner, m=michelin(d.michelin);
+  const ref=backup?'LAST.backup':'LAST.plans['+idx+']';
+  return `<div class="card ${backup?'backup':''}" onclick="openModal(${ref})">
+    <button class="invite-btn" onclick="event.stopPropagation();openInvite(${ref})">
+      <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Invite</button>
+    ${backup?'<span class="badge">Backup</span>':`<span class="badge">${Math.round(p.fit_score*100)}% fit</span>`}
+    ${routeMap(p)}
+    <div class="cardbody">
+      <div class="cardname">${d.name}</div>
+      <div class="meta">${d.neighborhood} · ${dollars(d.price_tier)}${m?` · <span class="mich">${m}</span>`:""}</div>
+      ${arcHtml(p.reasoning.vibe_arc)}
+      <p class="why">${p.reasoning.plan_level}</p>
+      ${availLine(d.availability)}
+      <div class="foot"><span>🚶 ${p.logistics.total_walk_min} min total</span>
+        <span>≈ $${p.logistics.est_total_cost_usd} for ${LAST.brief.party_size}</span></div>
+    </div>
+  </div>`;
+}
+
+/* ---------- modal ---------- */
+function legHtml(v,kind,walkKey){
+  if(!v) return "";
+  const walk=v[walkKey]!=null?` · ${v[walkKey]} min walk`:"";
+  return `<div class="leg"><div class="lk">${kind}${walk}</div>
+    <div class="ln">${v.name}</div>
+    <div class="note" style="margin-top:2px">${v.neighborhood} · ${dollars(v.price_tier)}${v.michelin?` · ${michelin(v.michelin)}`:""}</div>
+    ${v.availability?availLine(v.availability):""}
+    <div>${bookingAction(v)}</div></div>`;
+}
+function bookingAction(v){
+  const bk=v.booking; if(!bk) return "";
+  if(bk.kind==="walk_in") return `<div class="note">Walk-in — no reservation needed.</div>`;
+  const dep=v.requires_deposit?` <span class="note">(deposit at booking)</span>`:"";
+  return `<a class="book" target="_blank" rel="noopener" href="${bk.url}">${bk.label}</a>${dep}`;
+}
+function openModal(p){
+  CURRENT_PLAN=p; const d=p.dinner;
+  const tl=p.logistics.timeline.map(t=>`<li><span class="t">${t.t}</span><span>${t.what}</span></li>`).join("");
+  const factors=(d.top_factors||[]).map(f=>`<span class="chip" style="cursor:default">${f.note}</span>`).join("");
+  document.getElementById("modal").innerHTML=`
+    <button class="close" onclick="closeModal()">×</button>
+    <h3>${d.name}</h3>
+    <div class="meta">${d.neighborhood} · ${dollars(d.price_tier)}${d.michelin?` · <span class="mich">${michelin(d.michelin)}</span>`:""} · ${Math.round(p.fit_score*100)}% fit</div>
+    ${arcHtml(p.reasoning.vibe_arc)}
+    <p class="why">${p.reasoning.plan_level}</p>
+    <button class="invite-cta" onclick="openInvite(CURRENT_PLAN)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      Create your invitation</button>
+    <div id="leafmap"></div>
+    <div class="legend" id="leafLegend">${legendHtml(p)}</div>
+    <div class="chips" style="margin-top:14px">${factors}</div>
+    <ul class="timeline">${tl}</ul>
+    <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;color:var(--muted)">
+      <span>🚶 ${p.logistics.total_walk_min} min walking</span><span>≈ $${p.logistics.est_total_cost_usd} total</span></div>
+    ${legHtml(p.pre,"Drinks beforehand","walk_min_to_dinner")}
+    ${legHtml(d,"Dinner",null)}
+    ${legHtml(p.post,"After","walk_min_from_dinner")}
+    <div style="margin-top:14px">${ LAST.brief.date
+      ? `<button class="book" onclick="addToCalendar()">📅 Add evening to calendar</button>`
+      : `<span class="note">Pick a date in the form to add this to your calendar.</span>` }</div>
+    <p class="note">Booking is assisted: each link opens the platform pre-filled with your date, time and
+      party — you review and confirm. Nothing books and no money moves without you.
+      <span class="src">· reasoning: ${p.reasoning.source}</span></p>`;
+  document.getElementById("overlay").classList.add("open");
+  initLeaflet(p);
+  clearCardHint();
+  maybeInviteHint();
+}
+
+/* ---------- interactive map (Leaflet + Carto, keyless) ---------- */
+let LEAFMAP=null;
+function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+function planStops(p){
+  const a=[]; if(p.pre) a.push({...p.pre,role:"pre"}); a.push({...p.dinner,role:"din"});
+  if(p.post) a.push({...p.post,role:"post"}); return a;
+}
+function legendHtml(p){
+  return planStops(p).map((s,i)=>{ const m=STOP_META[s.role];
+    return `<span><i style="background:${m.color}"></i>${i+1}. ${m.label}: ${shortName(s.name)}</span>`; }).join("");
+}
+function initLeaflet(p){
+  const el=document.getElementById("leafmap"); if(!el) return;
+  if(typeof L==="undefined"){                       // offline / CDN blocked → cartoon SVG fallback
+    el.outerHTML=`<div style="border-radius:12px;overflow:hidden;border:1px solid var(--line);margin-top:14px">${routeMap(p)}</div>`;
+    const lg=document.getElementById("leafLegend"); if(lg) lg.style.display="none";
+    return;
+  }
+  if(LEAFMAP){ LEAFMAP.remove(); LEAFMAP=null; }
+  const stops=planStops(p), pts=stops.map(s=>[s.lat,s.lng]);
+  const dark=document.documentElement.getAttribute("data-theme")==="dark";
+  const url=`https://{s}.basemaps.cartocdn.com/${dark?"dark_all":"light_all"}/{z}/{x}/{y}{r}.png`;
+  const map=L.map(el,{zoomControl:true,scrollWheelZoom:false});
+  L.tileLayer(url,{subdomains:"abcd",maxZoom:20,detectRetina:true,
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+  stops.forEach((s,i)=>{ const m=STOP_META[s.role], D=s.role==="din"?30:24;
+    L.marker([s.lat,s.lng],{icon:L.divIcon({className:"",iconSize:[D,D],iconAnchor:[D/2,D/2],
+      html:`<div style="width:${D}px;height:${D}px;border-radius:50%;background:${m.color};color:#1a130d;
+        border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45);display:flex;align-items:center;
+        justify-content:center;font:700 ${D>26?13:11}px Inter,sans-serif">${i+1}</div>`})})
+      .addTo(map).bindPopup(`<b>${i+1}. ${m.label}</b><br>${s.name}`);
+  });
+  if(pts.length>1){
+    L.polyline(pts,{color:cssVar("--accent"),weight:3,opacity:.85,dashArray:"1 9",lineCap:"round"}).addTo(map);
+    map.fitBounds(pts,{padding:[34,34]});
+  } else { map.setView(pts[0],15); }
+  setTimeout(()=>map.invalidateSize(),60);
+  LEAFMAP=map;
+}
+function closeModal(){ if(LEAFMAP){LEAFMAP.remove();LEAFMAP=null;} document.getElementById("overlay").classList.remove("open"); }
+document.getElementById("overlay").addEventListener("click",e=>{ if(e.target.id==="overlay") closeModal(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeModal(); closeInvite(); } });
+
+/* ---------- ics ---------- */
+function _icsStamp(dateStr,hhmm){ const [y,m,d]=dateStr.split("-"); return `${y}${m}${d}T${hhmm.replace(":","")}00`; }
+function _addMin(hhmm,mins){ let t=(+hhmm.slice(0,2))*60+(+hhmm.slice(3))+mins; t=((t%1440)+1440)%1440;
+  return `${String(t/60|0).padStart(2,"0")}:${String(t%60).padStart(2,"0")}`; }
+function addToCalendar(){
+  const p=CURRENT_PLAN,date=LAST.brief.date; if(!p||!date) return;
+  const tl=p.logistics.timeline, start=tl[0].t, end=_addMin(tl[tl.length-1].t,90);
+  const title=`${(OCC_LABEL[p.occasion]||"Evening").replace(/^./,c=>c.toUpperCase())} — ${p.dinner.name}`;
+  const desc=`${p.reasoning.plan_level}\\n\\n`+tl.map(t=>`${t.t} ${t.what}`).join("\\n");
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Evening//EN","BEGIN:VEVENT",
+    `UID:${p.id}-${date}@evening`,`DTSTART:${_icsStamp(date,start)}`,`DTEND:${_icsStamp(date,end)}`,
+    `SUMMARY:${title}`,`LOCATION:${p.dinner.neighborhood}, NYC`,`DESCRIPTION:${desc}`,
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));
+  a.download=`evening-${p.dinner.name.replace(/\W+/g,"_").toLowerCase()}.ics`;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+}
+
+/* ---------- invitation card ---------- */
+let INVITE_PLAN=null;
+const INVITE_TITLE={first_date:"A First Date",second_date:"A Date Night",
+  anniversary:"An Anniversary Evening",proposal:"A Special Evening",
+  business:"A Dinner Invitation",group:"A Celebration"};
+const INVITE_DOT={pre:"#c79a3e",din:"#a8482e",post:"#b0703f"};
+function inviteArt(role,color,x,y){          // little line-art cartoon per stop
+  const o=`<g transform="translate(${x},${y})" stroke="${color}" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">`;
+  if(role==="pre")  return o+`<path d="M-9 -8 L9 -8 L0 2 Z"/><path d="M0 2 V10"/><path d="M-7 11 H7"/><circle cx="3.5" cy="-3.5" r="1.6" fill="${color}" stroke="none"/></g>`;
+  if(role==="din")  return o+`<circle cx="0" cy="0" r="8"/><path d="M13 -9 V9"/><path d="M-12 -9 V9 M-15 -9 V-3 M-9 -9 V-3"/></g>`;
+  return o+`<path d="M-7 -1 L7 -1 L5 11 L-5 11 Z"/><path d="M-7 -1 a7 6 0 0 1 14 0"/><circle cx="0" cy="-9" r="1.8" fill="${color}" stroke="none"/></g>`;
+}
+function escapeXml(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function prettyDate(iso){ if(!iso) return ""; const d=new Date(iso+"T00:00:00");
+  return d.toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric",year:"numeric"}); }
+
+function inviteSVG(p,opts){
+  const W=520,H=720, occ=p.occasion;
+  const title=INVITE_TITLE[occ]||"An Evening";
+  const stops=planStops(p), tl=p.logistics.timeline;
+  const to=(opts.to||"").trim(), from=(opts.from||"").trim();
+  const dateStr=prettyDate(LAST.brief.date);
+  const tSize=title.length<=16?38:title.length<=24?31:26;
+  // header lines under the title
+  const head=[]; if(to) head.push("for "+to); if(dateStr) head.push(dateStr);
+  const headBottom=196+head.length*28;
+  const divY=headBottom+8;
+  const bStart=divY+42;
+  const bullets=stops.map((s,i)=>({t:(tl[i]||{}).t||"", role:s.role,
+    label:STOP_META[s.role].label, name:s.name,
+    hood:s.neighborhood||"", cuisine:(s.cuisine||[])[0]||"", price:s.price_tier||0}));
+  const corner=(x,y,r)=>`<g transform="translate(${x},${y}) rotate(${r})">
+    <path d="M0 26 Q 0 0 26 0" fill="none" stroke="#c79a3e" stroke-width="1.4"/>
+    <circle cx="24" cy="24" r="1.8" fill="#c79a3e"/></g>`;
+  const divider=y=>`<g stroke="#c79a3e" stroke-width="1">
+    <line x1="170" y1="${y}" x2="238" y2="${y}"/><line x1="282" y1="${y}" x2="350" y2="${y}"/></g>
+    <path d="M260 ${y-6} L266 ${y} L260 ${y+6} L254 ${y} Z" fill="#c79a3e"/>`;
+  const bulletSvg=bullets.map((b,i)=>{ const y=bStart+i*62;
+    const sub=[b.hood, b.cuisine].filter(Boolean).join("   ·   ");
+    return `<circle cx="110" cy="${y}" r="14" fill="${INVITE_DOT[b.role]}"/>
+      <text x="110" y="${y+5}" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff8ee">${i+1}</text>
+      <text x="138" y="${y-3}" font-family="Fraunces,Georgia,serif" font-size="18" fill="#3a2c20">
+        <tspan fill="#a8482e" font-weight="600">${escapeXml(b.t)} </tspan>${escapeXml(b.label)} at ${escapeXml(shortName(b.name))}</text>
+      <text x="138" y="${y+15}" font-family="Inter,sans-serif" font-size="11.5" fill="#8a7a64">${escapeXml(sub)}</text>
+      ${inviteArt(b.role,"#7a5c3a",470,y-1)}`;
+  }).join("");
+  const bEnd=bStart+bullets.length*62;
+  const headSvg=head.map((l,i)=>`<text x="260" y="${196+i*28}" text-anchor="middle"
+    font-family="Fraunces,Georgia,serif" font-style="italic" font-size="17" fill="#7a5c3a">${escapeXml(l)}</text>`).join("");
+  const closing=occ==="proposal"?"A night to remember.":"Save the evening.";
+  const footer=`${p.logistics.total_walk_min} min of strolling`
+    +(p.reasoning.vibe_arc&&p.reasoning.vibe_arc.length?` · ${p.reasoning.vibe_arc.join(" · ")}`:"");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+    <defs>
+      <linearGradient id="ivbg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fdf7ec"/><stop offset="1" stop-color="#f4e6cd"/></linearGradient>
+      <pattern id="ivdot" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="3" cy="3" r="1" fill="#c79a3e" opacity=".13"/></pattern>
+    </defs>
+    <rect width="${W}" height="${H}" fill="url(#ivbg)"/>
+    <rect x="30" y="30" width="460" height="660" fill="url(#ivdot)"/>
+    <rect x="22" y="22" width="476" height="676" rx="6" fill="none" stroke="#c79a3e" stroke-width="2"/>
+    <rect x="30" y="30" width="460" height="660" rx="4" fill="none" stroke="#c79a3e" stroke-width="1" opacity=".55"/>
+    ${corner(40,40,0)}${corner(480,40,90)}${corner(480,680,180)}${corner(40,680,270)}
+    <g stroke="#a8482e" stroke-width="1.6" fill="none" stroke-linecap="round">
+      <g transform="translate(249,62) rotate(-14)"><path d="M-5 -7 a5 5 0 0 0 10 0"/><path d="M0 -2 V8"/><path d="M-4 8 H4"/></g>
+      <g transform="translate(271,62) rotate(14)"><path d="M-5 -7 a5 5 0 0 0 10 0"/><path d="M0 -2 V8"/><path d="M-4 8 H4"/></g></g>
+    <text x="260" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="12"
+      letter-spacing="5" fill="#a8482e">· AN INVITATION ·</text>
+    <text x="260" y="156" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-style="italic"
+      font-size="${tSize}" font-weight="600" fill="#3a2c20">${escapeXml(title)}</text>
+    ${headSvg}${divider(divY)}${bulletSvg}
+    ${divider(bEnd+8)}
+    <text x="260" y="${H-118}" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-style="italic"
+      font-size="20" fill="#a8482e">${escapeXml(closing)}</text>
+    ${from?`<text x="260" y="${H-88}" text-anchor="middle" font-family="Fraunces,Georgia,serif"
+      font-size="16" fill="#3a2c20">— ${escapeXml(from)}</text>`:""}
+    <text x="260" y="${H-50}" text-anchor="middle" font-family="Inter,sans-serif" font-size="11"
+      fill="#8a7a64">${escapeXml(footer)}</text>
+  </svg>`;
+}
+
+function openInvite(p){
+  INVITE_PLAN=p;
+  markSeen("evening-invite-hint");
+  document.querySelectorAll(".ctapulse").forEach(e=>e.classList.remove("ctapulse"));
+  document.getElementById("inviteModal").innerHTML=`
+    <button class="close" onclick="closeInvite()">×</button>
+    <h3>Your invitation</h3>
+    <div class="invite-controls">
+      <input id="invTo" type="text" placeholder="To… (e.g. Maya)" oninput="renderInvite()">
+      <input id="invFrom" type="text" placeholder="From… (e.g. Alex)" oninput="renderInvite()">
+    </div>
+    <div class="invite-preview" id="invitePreview"></div>
+    <div class="invite-actions">
+      <button class="book" onclick="downloadInvite('png')">Download PNG</button>
+      <button class="book" style="background:var(--chip);color:var(--ink)" onclick="downloadInvite('svg')">Download SVG</button>
+      <span class="note" style="margin:0">Tip: add a name above to personalise it.</span>
+    </div>`;
+  renderInvite();
+  document.getElementById("inviteOverlay").classList.add("open");
+}
+function renderInvite(){
+  const to=(document.getElementById("invTo")||{}).value||"";
+  const from=(document.getElementById("invFrom")||{}).value||"";
+  document.getElementById("invitePreview").innerHTML=inviteSVG(INVITE_PLAN,{to,from});
+}
+function closeInvite(){ document.getElementById("inviteOverlay").classList.remove("open"); }
+document.getElementById("inviteOverlay").addEventListener("click",e=>{ if(e.target.id==="inviteOverlay") closeInvite(); });
+
+function downloadInvite(kind){
+  const svg=document.querySelector("#invitePreview svg"); if(!svg) return;
+  const name="invitation-"+(INVITE_PLAN.dinner.name.replace(/\W+/g,"_").toLowerCase());
+  const xml=new XMLSerializer().serializeToString(svg);
+  if(kind==="svg"){
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([xml],{type:"image/svg+xml"}));
+    a.download=name+".svg"; a.click(); URL.revokeObjectURL(a.href); return;
+  }
+  const url="data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(xml)));
+  const img=new Image();
+  img.onload=()=>{ const s=2,c=document.createElement("canvas"); c.width=520*s; c.height=720*s;
+    const ctx=c.getContext("2d"); ctx.scale(s,s); ctx.drawImage(img,0,0,520,720);
+    c.toBlob(b=>{ const a=document.createElement("a"); a.href=URL.createObjectURL(b);
+      a.download=name+".png"; a.click(); URL.revokeObjectURL(a.href); },"image/png"); };
+  img.src=url;
+}
+
+/* ---------- first-run guided tour + hints ---------- */
+function seen(k){ try{return localStorage.getItem(k)==="1";}catch(e){return false;} }
+function markSeen(k){ try{localStorage.setItem(k,"1");}catch(e){} }
+
+const TOUR=[
+  {center:true,title:"Welcome, Erica <span style=\"color:#e23744\">♥</span>",text:"Plan a whole special-occasion night — drinks, dinner, and something after — in just a few taps. Here's the quick tour."},
+  {sel:"#occGrid",title:"1 · The occasion",text:"Start here. A first date, an anniversary, a proposal… this shapes every suggestion that follows."},
+  {sel:"#dateChips",title:"2 · When",text:"Pick a night and a time — or leave it flexible if you're not sure yet."},
+  {sel:"#budgetChips",title:"3 · Budget",text:"Set a ceiling, or leave it on Any. Everything else here is optional too."},
+  {sel:"#whereChips",title:"4 · Where",text:"Anywhere in the city, a single borough, or hand-pick neighborhoods."},
+  {sel:"#submit",title:"5 · Plan the evening",text:"Tap here and you'll get a few complete evenings to choose from."},
+  {center:true,title:"Then make it yours",text:"Open any plan to see its map and timeline — then tap “Create your invitation” to make a keepsake you can send. Enjoy your evening."},
+];
+let tourI=0, tourTarget=null;
+function tourEls(){
+  let ring=document.getElementById("tourRing"), tip=document.getElementById("tourTip");
+  if(!ring){ ring=document.createElement("div"); ring.id="tourRing"; ring.className="tour-ring"; document.body.appendChild(ring); }
+  if(!tip){ tip=document.createElement("div"); tip.id="tourTip"; tip.className="tour-tip"; document.body.appendChild(tip); }
+  return {ring,tip};
+}
+function startTour(force){
+  if(!force && seen("evening-onboarded")) return;
+  document.getElementById("details").classList.add("open");   // reveal fields for the tour
+  tourI=0; showTourStep();
+  window.addEventListener("resize",repositionTour);
+  window.addEventListener("scroll",repositionTour,true);
+}
+function showTourStep(){
+  const s=TOUR[tourI], {ring,tip}=tourEls();
+  const last=tourI===TOUR.length-1;
+  tip.innerHTML=`<h4>${s.title}</h4><p>${s.text}</p>
+    <div class="trow"><span class="steps">${tourI+1} / ${TOUR.length}</span>
+      <span>${last?"":'<button class="skip" onclick="endTour()">Skip</button>'}
+      <button onclick="nextTour()">${last?"Done":"Next"}</button></span></div>`;
+  if(s.center || !document.querySelector(s.sel||"")){
+    tourTarget=null; ring.style.display="none"; tip.className="tour-tip center"; tip.style.top=""; tip.style.left="";
+  }else{
+    tourTarget=document.querySelector(s.sel);
+    tourTarget.scrollIntoView({block:"center",behavior:"smooth"});
+    setTimeout(()=>placeTour(),360);
+  }
+}
+function placeTour(){
+  if(!tourTarget) return;
+  const {ring,tip}=tourEls(), r=tourTarget.getBoundingClientRect(), pad=8;
+  ring.style.display="block";
+  ring.style.top=(r.top-pad)+"px"; ring.style.left=(r.left-pad)+"px";
+  ring.style.width=(r.width+2*pad)+"px"; ring.style.height=(r.height+2*pad)+"px";
+  tip.className="tour-tip";
+  const tw=tip.offsetWidth, th=tip.offsetHeight;
+  let top=r.bottom+14; if(top+th>innerHeight-10) top=Math.max(10,r.top-th-14);
+  let left=Math.min(Math.max(10,r.left), innerWidth-tw-10);
+  tip.style.top=top+"px"; tip.style.left=left+"px";
+}
+function repositionTour(){ if(tourTarget) placeTour(); }
+function nextTour(){ tourI++; if(tourI>=TOUR.length) return endTour(); showTourStep(); }
+function endTour(){
+  markSeen("evening-onboarded");
+  const ring=document.getElementById("tourRing"), tip=document.getElementById("tourTip");
+  if(ring) ring.remove(); if(tip) tip.remove(); tourTarget=null;
+  window.removeEventListener("resize",repositionTour);
+  window.removeEventListener("scroll",repositionTour,true);
+}
+
+/* gentle one-time pulse hints after the tour */
+let TOAST_T=null;
+function showToast(msg){
+  hideToast();
+  const t=document.createElement("div"); t.id="toast"; t.className="toast";
+  t.innerHTML=`<span>${msg}</span><button onclick="hideToast()" aria-label="Dismiss">×</button>`;
+  document.body.appendChild(t);
+  TOAST_T=setTimeout(hideToast,7000);
+}
+function hideToast(){ const t=document.getElementById("toast"); if(t)t.remove(); if(TOAST_T)clearTimeout(TOAST_T); }
+function maybeCardHint(){
+  if(seen("evening-card-hint")) return;
+  const c=document.querySelector("#results .card"); if(!c) return;
+  c.classList.add("hintpulse"); showToast("Tap a plan to open the full evening");
+}
+function clearCardHint(){
+  document.querySelectorAll(".hintpulse").forEach(e=>e.classList.remove("hintpulse"));
+  hideToast(); markSeen("evening-card-hint");
+}
+function maybeInviteHint(){
+  if(seen("evening-invite-hint")) return;
+  const cta=document.querySelector("#modal .invite-cta"); if(cta) cta.classList.add("ctapulse");
+}
+
+window.addEventListener("load",()=>{ if(!seen("evening-onboarded")) setTimeout(()=>startTour(false),650); });
+</script>
+</body>
+</html>

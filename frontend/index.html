@@ -126,6 +126,23 @@
     transition:transform .1s,border-color .15s}
   .card:hover{transform:translateY(-3px);border-color:var(--accent)}
   .card.backup{background:var(--card2);border-style:dashed}
+  .cardphoto{position:relative;width:100%;height:180px;overflow:hidden;border-bottom:1px solid var(--line);
+    background:linear-gradient(135deg,var(--accent-soft),var(--card2))}
+  .cardphoto img{width:100%;height:100%;object-fit:cover;display:block}
+  .cardphoto .credit{position:absolute;bottom:6px;right:8px;font-size:10px;color:#fff;
+    background:rgba(0,0,0,.42);padding:2px 7px;border-radius:6px;max-width:70%;overflow:hidden;
+    white-space:nowrap;text-overflow:ellipsis}
+  .modalphoto{width:100%;height:210px;border-radius:12px;overflow:hidden;margin:10px 0 2px;position:relative;
+    background:linear-gradient(135deg,var(--accent-soft),var(--card2))}
+  .modalphoto img{width:100%;height:100%;object-fit:cover;display:block}
+  .modalphoto .credit{position:absolute;bottom:7px;right:9px;font-size:10px;color:#fff;background:rgba(0,0,0,.42);padding:2px 7px;border-radius:6px}
+  .live-box{margin:14px 0 2px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card2)}
+  .live-h{display:flex;align-items:center;gap:8px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:7px}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+  .live-box p{margin:0;font-size:14px;line-height:1.55}
+  .live-src{margin-top:8px;font-size:12px;color:var(--muted)}
+  .live-src a{margin-right:8px}
+  .spin.small{width:14px;height:14px;border-width:2px;margin:0}
   .map{position:relative;width:100%;height:150px;display:block;border-bottom:1px solid var(--line)}
   .map svg{display:block;width:100%;height:100%}
   .legend{display:flex;flex-wrap:wrap;gap:10px;padding:10px 24px 0;font-size:12px;color:var(--muted)}
@@ -651,6 +668,13 @@ function routeMap(p){
     </svg></div><div class="legend">${legend}</div>`;
 }
 
+function photoImg(d,cls){
+  return `<div class="${cls}"><img loading="lazy" src="${API_BASE+d.photo_url}" alt="${escapeXml(d.name)}"
+    onerror="this.remove()">${d.photo_credit?`<span class="credit">${escapeXml(d.photo_credit)}</span>`:""}</div>`;
+}
+function cardHeader(p){                       // real photo when we have one, else the illustrated map
+  return p.dinner.photo_url ? photoImg(p.dinner,"cardphoto") : routeMap(p);
+}
 function cardHtml(p,idx,backup){
   const d=p.dinner, m=michelin(d.michelin);
   const ref=backup?'LAST.backup':'LAST.plans['+idx+']';
@@ -658,7 +682,7 @@ function cardHtml(p,idx,backup){
     <button class="invite-btn" onclick="event.stopPropagation();openInvite(${ref})">
       <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Invite</button>
     ${backup?'<span class="badge">Backup</span>':`<span class="badge">${Math.round(p.fit_score*100)}% fit</span>`}
-    ${routeMap(p)}
+    ${cardHeader(p)}
     <div class="cardbody">
       <div class="cardname">${d.name}</div>
       <div class="meta">${d.neighborhood} · ${dollars(d.price_tier)}${m?` · <span class="mich">${m}</span>`:""}</div>
@@ -695,6 +719,7 @@ function openModal(p){
     <button class="close" onclick="closeModal()">×</button>
     <h3>${d.name}</h3>
     <div class="meta">${d.neighborhood} · ${dollars(d.price_tier)}${d.michelin?` · <span class="mich">${michelin(d.michelin)}</span>`:""} · ${Math.round(p.fit_score*100)}% fit</div>
+    ${d.photo_url?photoImg(d,"modalphoto"):""}
     ${arcHtml(p.reasoning.vibe_arc)}
     <p class="why">${p.reasoning.plan_level}</p>
     <button class="invite-cta" onclick="openInvite(CURRENT_PLAN)">
@@ -702,6 +727,7 @@ function openModal(p){
       Create your invitation</button>
     <div id="leafmap"></div>
     <div class="legend" id="leafLegend">${legendHtml(p)}</div>
+    <div id="liveAvail"></div>
     <div class="chips" style="margin-top:14px">${factors}</div>
     <ul class="timeline">${tl}</ul>
     <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;color:var(--muted)">
@@ -719,6 +745,26 @@ function openModal(p){
   initLeaflet(p);
   clearCardHint();
   maybeInviteHint();
+  checkLive(p.dinner);
+}
+
+/* ---------- runtime availability agent ---------- */
+let AGENT_ENABLED=false;
+function checkLive(d){
+  const el=document.getElementById("liveAvail"); if(!el) return;
+  if(!AGENT_ENABLED){ el.innerHTML=""; return; }
+  el.innerHTML=`<div class="live-box"><div class="live-h"><span class="spin small"></span>
+    Checking live availability…</div></div>`;
+  const b=LAST.brief;
+  fetch(API_BASE+"/availability/live",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({name:d.name,neighborhood:d.neighborhood,date:b.date,time:b.time,party_size:b.party_size})})
+    .then(r=>r.json()).then(res=>{
+      if(!res.enabled || !res.summary){ el.innerHTML=""; return; }
+      const src=(res.sources||[]).map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.title||"source"}</a>`).join(" ");
+      el.innerHTML=`<div class="live-box"><div class="live-h"><span class="live-dot"></span>
+        Live check <span style="text-transform:none;letter-spacing:0">· searched the web just now</span></div>
+        <p>${res.summary}</p>${src?`<div class="live-src">Sources: ${src}</div>`:""}</div>`;
+    }).catch(()=>{ el.innerHTML=""; });
 }
 
 /* ---------- interactive map (Leaflet + Carto, keyless) ---------- */
@@ -1011,7 +1057,10 @@ function maybeInviteHint(){
   const cta=document.querySelector("#modal .invite-cta"); if(cta) cta.classList.add("ctapulse");
 }
 
-window.addEventListener("load",()=>{ if(!seen("evening-onboarded")) setTimeout(()=>startTour(false),650); });
+window.addEventListener("load",()=>{
+  if(!seen("evening-onboarded")) setTimeout(()=>startTour(false),650);
+  fetch(API_BASE+"/health").then(r=>r.json()).then(h=>{ AGENT_ENABLED=!!h.agent; }).catch(()=>{});
+});
 </script>
 </body>
 </html>

@@ -147,6 +147,27 @@ def test_booking_module_units():
 
 
 # --- one-click corrections (weight adjust) ----------------------------------
+def test_health_reports_agent_flag():
+    h = client.get("/health").json()
+    assert "agent" in h and isinstance(h["agent"], bool)
+
+
+def test_plan_legs_carry_photo_fields():
+    r = client.post("/plan", json={"occasion": "anniversary", "use_llm": False}).json()
+    d = r["plans"][0]["dinner"]
+    assert "photo_url" in d and "photo_credit" in d  # null until fetch_photos runs
+
+
+def test_live_availability_graceful_without_key():
+    # No ANTHROPIC_API_KEY in test env -> endpoint returns enabled:false, no crash
+    r = client.post("/availability/live",
+                    json={"name": "Le Bernardin", "neighborhood": "Midtown",
+                          "date": "2026-07-11", "time": "19:30", "party_size": 2}).json()
+    assert r.get("enabled") in (False, True)
+    if r.get("enabled") is False:
+        assert "note" in r
+
+
 def test_adjust_is_accepted_and_changes_ranking():
     from backend import data, rubric
     dinners = data.venues_by_role("dinner")

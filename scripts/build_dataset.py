@@ -388,6 +388,8 @@ def expand(rec):
                     "requires_deposit": plat == "tock"},
         "tags": tags, "good_for": good_for, "dietary": dietary,
         "notes": notes, "sources": ["knowledge_seed"], "verified": False,
+        # filled by scripts/fetch_photos.py (Google Places); null until then.
+        "photo_url": None, "photo_credit": None,
     }
 
 

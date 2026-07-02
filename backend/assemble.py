@@ -49,6 +49,7 @@ def _pub(v: dict) -> dict:
         "requires_deposit": v["booking"]["requires_deposit"],
         "url_template": v["booking"].get("url_template"),
         "notes": v.get("notes", ""),
+        "photo_url": v.get("photo_url"), "photo_credit": v.get("photo_credit"),
     }
 
 

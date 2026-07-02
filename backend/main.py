@@ -15,11 +15,14 @@ from typing import Dict, List, Optional
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from . import assemble, data, rubric
+from . import agent, assemble, data, rubric
 
 _FRONTEND = os.path.join(os.path.dirname(__file__), "..", "frontend", "index.html")
+_PHOTOS = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "photos"))
+os.makedirs(_PHOTOS, exist_ok=True)
 
 app = FastAPI(title="Dining Concierge", version="0.2.0")
 
@@ -27,6 +30,8 @@ app = FastAPI(title="Dining Concierge", version="0.2.0")
 app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"],
 )
+# Serve downloaded venue photos (populated by scripts/fetch_photos.py).
+app.mount("/photos", StaticFiles(directory=_PHOTOS), name="photos")
 
 
 # --- Request / response models ---------------------------------------------
@@ -104,7 +109,30 @@ def frontend() -> FileResponse:
 @app.get("/health")
 def health() -> dict:
     return {"ok": True, "venues": len(data.all_venues()),
-            "occasions": list(rubric.OCCASIONS)}
+            "occasions": list(rubric.OCCASIONS),
+            "agent": agent.available()}
+
+
+class LiveReq(BaseModel):
+    name: str
+    neighborhood: str = ""
+    date: Optional[str] = None
+    time: Optional[str] = None
+    party_size: int = 2
+
+
+@app.post("/availability/live")
+def availability_live(req: LiveReq) -> dict:
+    """Runtime agent: web-search a venue's current hours/policy/status.
+    Returns {enabled: false} when no ANTHROPIC_API_KEY is configured."""
+    if not agent.available():
+        return {"enabled": False,
+                "note": "Live check needs ANTHROPIC_API_KEY on the server."}
+    res = agent.live_availability(req.name, req.neighborhood, req.date,
+                                  req.time, req.party_size)
+    return {"enabled": True, **res} if res else {
+        "enabled": True, "summary": None,
+        "note": "Couldn't complete a live check just now."}
 
 
 @app.post("/plan")

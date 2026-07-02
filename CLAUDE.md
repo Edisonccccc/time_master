@@ -78,9 +78,17 @@ handed an opaque list.
   - `backend/booking.py` — assisted handoff URL per venue (`url_template` or
     date/time/party pre-filled platform search); attached to every plan leg.
     Client-side `.ics` calendar export in the frontend. 16 tests.
-- **Next (M6):** deploy to Render (container, env, rate limit). Plus the data
-  pass: verify facts (`verified:true`), fill `url_template`s → exact deep-links;
-  a *real* availability provider stays deferred (no public API; needs sanctioned source).
+  - **Photos**: `photo_url`/`photo_credit` on venues (null until fetched); cards +
+    detail show the photo, else fall back to the illustrated map. `scripts/fetch_photos.py`
+    downloads official Google Places photos → `frontend/photos/` (served at `/photos`);
+    needs `GOOGLE_MAPS_API_KEY`. Licensing caveat in `data/DATA_NOTES.md`.
+  - **Runtime availability agent**: `backend/agent.py` uses the Anthropic API's
+    web_search tool to look up a venue's current hours/policy/status on demand.
+    `POST /availability/live` (per opened plan, off the hot path); `/health.agent`
+    reports if enabled. Needs `ANTHROPIC_API_KEY`; falls back silently to the stub.
+    Can't read exact live table inventory (no public API) — an informed, cited read.
+- **Next (M6):** deploy to Render (push done via user's machine). Plus the data
+  pass: run `geocode.py` + `fetch_photos.py`, verify facts, fill `url_template`s.
 
 ## Run
 ```

@@ -37,6 +37,20 @@ python3 scripts/geocode.py             # write in place
 ```
 Large jumps from the seed point are flagged and NOT auto-written — review by hand.
 
+## Photos (Google Places)
+`scripts/fetch_photos.py` fills `photo_url` + `photo_credit` from the Google
+Places API (official provider photos) and downloads them into `frontend/photos/`.
+Needs `GOOGLE_MAPS_API_KEY` (Places API enabled + billing). Cards show the photo
+when present, else the illustrated route map. **Licensing:** Google restricts
+caching Place photos (~30 days) and requires showing attribution (we store/show
+`photo_credit`) — fine for a personal/demo project; use a server-side proxy for
+anything public/long-lived. Run:
+```
+export GOOGLE_MAPS_API_KEY=...
+python3 scripts/fetch_photos.py --dry-run   # preview
+python3 scripts/fetch_photos.py             # download + write
+```
+
 ## Regenerate
 ```
 python3 scripts/build_dataset.py

@@ -142,6 +142,9 @@
   .live-box p{margin:0;font-size:14px;line-height:1.55}
   .live-src{margin-top:8px;font-size:12px;color:var(--muted)}
   .live-src a{margin-right:8px}
+  .livebadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--ok);
+    background:var(--ok-bg);padding:3px 9px;border-radius:20px;margin-left:6px;vertical-align:middle;cursor:help}
+  .livebadge::before{content:"✓";font-weight:700}
   .spin.small{width:14px;height:14px;border-width:2px;margin:0}
   .map{position:relative;width:100%;height:150px;display:block;border-bottom:1px solid var(--line)}
   .map svg{display:block;width:100%;height:100%}
@@ -565,6 +568,7 @@ function renderResults(){
   }
   out.innerHTML=html;
   maybeCardHint();
+  prefetchLive();
 }
 
 function toggleCorr(k){ activeCorr.has(k)?activeCorr.delete(k):activeCorr.add(k); reRunWithCorrections(); }
@@ -678,7 +682,7 @@ function cardHeader(p){                       // real photo when we have one, el
 function cardHtml(p,idx,backup){
   const d=p.dinner, m=michelin(d.michelin);
   const ref=backup?'LAST.backup':'LAST.plans['+idx+']';
-  return `<div class="card ${backup?'backup':''}" onclick="openModal(${ref})">
+  return `<div class="card ${backup?'backup':''}" data-cardkey="${escapeXml(liveKey(d))}" onclick="openModal(${ref})">
     <button class="invite-btn" onclick="event.stopPropagation();openInvite(${ref})">
       <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Invite</button>
     ${backup?'<span class="badge">Backup</span>':`<span class="badge">${Math.round(p.fit_score*100)}% fit</span>`}
@@ -688,7 +692,7 @@ function cardHtml(p,idx,backup){
       <div class="meta">${d.neighborhood} · ${dollars(d.price_tier)}${m?` · <span class="mich">${m}</span>`:""}</div>
       ${arcHtml(p.reasoning.vibe_arc)}
       <p class="why">${p.reasoning.plan_level}</p>
-      ${availLine(d.availability)}
+      ${availLine(d.availability)}<span class="livebadge" style="display:none">Live-checked</span>
       <div class="foot"><span>🚶 ${p.logistics.total_walk_min} min total</span>
         <span>≈ $${p.logistics.est_total_cost_usd} for ${LAST.brief.party_size}</span></div>
     </div>
@@ -750,21 +754,48 @@ function openModal(p){
 
 /* ---------- runtime availability agent ---------- */
 let AGENT_ENABLED=false;
+const LIVE_CACHE={};        // key -> result json
+const LIVE_PROMISE={};      // key -> in-flight promise (dedupe)
+function liveKey(d){ const b=LAST?LAST.brief:{}; return `${d.name}|${b.date||""}|${b.time||""}|${b.party_size||2}`; }
+function ensureLive(d){
+  const k=liveKey(d);
+  if(LIVE_PROMISE[k]) return LIVE_PROMISE[k];
+  const b=LAST.brief;
+  LIVE_PROMISE[k]=fetch(API_BASE+"/availability/live",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({name:d.name,neighborhood:d.neighborhood,date:b.date,time:b.time,party_size:b.party_size})})
+    .then(r=>r.json()).then(res=>{ LIVE_CACHE[k]=res; return res; })
+    .catch(()=>({enabled:false}));
+  return LIVE_PROMISE[k];
+}
+function markLiveBadge(d){
+  const k=liveKey(d), res=LIVE_CACHE[k];
+  if(!res||!res.enabled||!res.summary) return;
+  document.querySelectorAll("#results .card").forEach(card=>{
+    if(card.dataset.cardkey===k){ const b=card.querySelector(".livebadge");
+      if(b){ b.style.display="inline-flex"; b.title=res.summary; } }
+  });
+}
+function prefetchLive(){        // verify the shown plans in the background -> badges
+  if(!AGENT_ENABLED || !LAST) return;
+  [...(LAST.plans||[]), LAST.backup].filter(Boolean).forEach(p=>{
+    ensureLive(p.dinner).then(res=>{ if(res&&res.enabled&&res.summary) markLiveBadge(p.dinner); });
+  });
+}
+function renderLive(el,res){
+  if(!res||!res.enabled||!res.summary){ el.innerHTML=""; return; }
+  const src=(res.sources||[]).map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.title||"source"}</a>`).join(" ");
+  el.innerHTML=`<div class="live-box"><div class="live-h"><span class="live-dot"></span>
+    Live check <span style="text-transform:none;letter-spacing:0">· searched the web</span></div>
+    <p>${res.summary}</p>${src?`<div class="live-src">Sources: ${src}</div>`:""}</div>`;
+}
 function checkLive(d){
   const el=document.getElementById("liveAvail"); if(!el) return;
   if(!AGENT_ENABLED){ el.innerHTML=""; return; }
+  const cached=LIVE_CACHE[liveKey(d)];
+  if(cached){ renderLive(el,cached); return; }
   el.innerHTML=`<div class="live-box"><div class="live-h"><span class="spin small"></span>
     Checking live availability…</div></div>`;
-  const b=LAST.brief;
-  fetch(API_BASE+"/availability/live",{method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({name:d.name,neighborhood:d.neighborhood,date:b.date,time:b.time,party_size:b.party_size})})
-    .then(r=>r.json()).then(res=>{
-      if(!res.enabled || !res.summary){ el.innerHTML=""; return; }
-      const src=(res.sources||[]).map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.title||"source"}</a>`).join(" ");
-      el.innerHTML=`<div class="live-box"><div class="live-h"><span class="live-dot"></span>
-        Live check <span style="text-transform:none;letter-spacing:0">· searched the web just now</span></div>
-        <p>${res.summary}</p>${src?`<div class="live-src">Sources: ${src}</div>`:""}</div>`;
-    }).catch(()=>{ el.innerHTML=""; });
+  ensureLive(d).then(res=>{ renderLive(el,res); markLiveBadge(d); });
 }
 
 /* ---------- interactive map (Leaflet + Carto, keyless) ---------- */

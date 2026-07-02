@@ -139,8 +139,20 @@
   .live-box{margin:14px 0 2px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card2)}
   .live-h{display:flex;align-items:center;gap:8px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:7px}
   .live-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
-  .live-box p{margin:0;font-size:14px;line-height:1.55}
-  .live-src{margin-top:8px;font-size:12px;color:var(--muted)}
+  .live-sub{text-transform:none;letter-spacing:0}
+  .live-status{display:inline-block;font-size:12px;font-weight:600;padding:3px 11px;border-radius:20px;margin-bottom:9px}
+  .live-status.ok{color:var(--ok);background:var(--ok-bg)}
+  .live-status.warn{color:var(--warn);background:var(--warn-bg)}
+  .live-status.bad{color:var(--bad);background:var(--bad-bg)}
+  .live-status.muted{color:var(--muted);background:var(--chip)}
+  .live-dot.warn{background:var(--warn);box-shadow:0 0 8px var(--warn)}
+  .live-dot.bad{background:var(--bad);box-shadow:0 0 8px var(--bad)}
+  .live-dot.muted{background:var(--muted);box-shadow:none}
+  .live-head{margin:0 0 11px;font-size:14.5px;line-height:1.5;font-weight:500}
+  .live-facts{display:flex;flex-direction:column;gap:7px;margin-bottom:4px}
+  .lf{display:flex;gap:12px;font-size:13px;line-height:1.45}
+  .lf-l{color:var(--muted);min-width:66px;flex:none}
+  .live-src{margin-top:10px;font-size:12px;color:var(--muted)}
   .live-src a{margin-right:8px}
   .livebadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--ok);
     background:var(--ok-bg);padding:3px 9px;border-radius:20px;margin-left:6px;vertical-align:middle;cursor:help}
@@ -430,7 +442,7 @@ function chipRow(host, items, getActive, onPick){
 
 // date chips
 function nextDOW(target){ const d=new Date(); let diff=(target-d.getDay()+7)%7; if(diff===0)diff=0; d.setDate(d.getDate()+diff); return d; }
-function iso(d){ return d.toISOString().slice(0,10); }
+function iso(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; }
 const DATE_OPTS=[["none","Flexible"],["today","Tonight"],["fri","This Fri"],["sat","This Sat"],["pick","Pick a date"]];
 function renderDateChips(){
   chipRow(document.getElementById("dateChips"), DATE_OPTS, v=>S.dateMode===v, v=>{
@@ -767,26 +779,40 @@ function ensureLive(d){
     .catch(()=>({enabled:false}));
   return LIVE_PROMISE[k];
 }
+const LIVE_STATUS={
+  likely_available:{cls:"ok",  label:"Likely available"},
+  call_ahead:      {cls:"warn",label:"Call ahead"},
+  hard_to_get:     {cls:"warn",label:"Hard to get"},
+  closed_that_day: {cls:"bad", label:"Closed that day"},
+  unknown:         {cls:"muted",label:"Availability unclear"},
+};
 function markLiveBadge(d){
   const k=liveKey(d), res=LIVE_CACHE[k];
-  if(!res||!res.enabled||!res.summary) return;
+  if(!res||!res.enabled||!res.headline) return;
   document.querySelectorAll("#results .card").forEach(card=>{
     if(card.dataset.cardkey===k){ const b=card.querySelector(".livebadge");
-      if(b){ b.style.display="inline-flex"; b.title=res.summary; } }
+      if(b){ b.style.display="inline-flex"; b.title=res.headline; } }
   });
 }
 function prefetchLive(){        // verify the shown plans in the background -> badges
   if(!AGENT_ENABLED || !LAST) return;
   [...(LAST.plans||[]), LAST.backup].filter(Boolean).forEach(p=>{
-    ensureLive(p.dinner).then(res=>{ if(res&&res.enabled&&res.summary) markLiveBadge(p.dinner); });
+    ensureLive(p.dinner).then(res=>{ if(res&&res.enabled&&res.headline) markLiveBadge(p.dinner); });
   });
 }
 function renderLive(el,res){
-  if(!res||!res.enabled||!res.summary){ el.innerHTML=""; return; }
-  const src=(res.sources||[]).map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.title||"source"}</a>`).join(" ");
-  el.innerHTML=`<div class="live-box"><div class="live-h"><span class="live-dot"></span>
-    Live check <span style="text-transform:none;letter-spacing:0">· searched the web</span></div>
-    <p>${res.summary}</p>${src?`<div class="live-src">Sources: ${src}</div>`:""}</div>`;
+  if(!res||!res.enabled||!res.headline){ el.innerHTML=""; return; }
+  const st=LIVE_STATUS[res.status]||LIVE_STATUS.unknown;
+  const fact=(l,v)=>v?`<div class="lf"><span class="lf-l">${l}</span><span>${escapeXml(v)}</span></div>`:"";
+  const facts=fact("Hours",res.hours)+fact("Booking",res.booking)+fact("Note",res.notice);
+  const src=(res.sources||[]).map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${escapeXml(s.title||"source")}</a>`).join(" ");
+  el.innerHTML=`<div class="live-box">
+    <div class="live-h"><span class="live-dot ${st.cls}"></span> Live check
+      <span class="live-sub">· searched the web</span></div>
+    <span class="live-status ${st.cls}">${st.label}</span>
+    <p class="live-head">${escapeXml(res.headline)}</p>
+    ${facts?`<div class="live-facts">${facts}</div>`:""}
+    ${src?`<div class="live-src">Sources: ${src}</div>`:""}</div>`;
 }
 function checkLive(d){
   const el=document.getElementById("liveAvail"); if(!el) return;

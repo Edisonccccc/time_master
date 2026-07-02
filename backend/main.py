@@ -131,7 +131,7 @@ def availability_live(req: LiveReq) -> dict:
     res = agent.live_availability(req.name, req.neighborhood, req.date,
                                   req.time, req.party_size)
     return {"enabled": True, **res} if res else {
-        "enabled": True, "summary": None,
+        "enabled": True, "headline": None,
         "note": "Couldn't complete a live check just now."}
 
 

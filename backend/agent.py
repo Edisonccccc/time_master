@@ -18,7 +18,9 @@ path (only runs on demand per opened plan) to bound cost/latency.
 from __future__ import annotations
 
 import datetime as _dt
+import json
 import os
+import re
 from typing import Optional
 
 _MODEL = os.environ.get("CONCIERGE_AGENT_MODEL", "claude-sonnet-4-6")
@@ -43,14 +45,19 @@ def live_availability(name: str, neighborhood: str, date: Optional[str],
     when = date or "an upcoming evening"
     at = f" around {time}" if time else ""
     prompt = (
-        f"Search the web for the restaurant \"{name}\" in {neighborhood or 'New York City'}. "
-        f"Using what you find, report for a party of {party} on {when}{at}:\n"
-        "1) current opening hours (and whether it's open that day),\n"
-        "2) how reservations work (platform, and how far ahead it typically books),\n"
-        "3) any recent notices (temporary closure, private events, relocation).\n"
-        "Then give ONE plain-language sentence assessing how easy a table is likely "
-        "to be. Be concise (max ~70 words total), factual, and do not invent specifics "
-        "you didn't find. If little is found, say so."
+        f"Check how easy it is to get a table. Search the web for the restaurant "
+        f"\"{name}\" in {neighborhood or 'New York City'}. For a party of {party} on "
+        f"{when}{at}, determine whether it's open that day + its hours, how reservations "
+        f"work (platform + how far ahead it books), any recent closure/private-event "
+        f"notice, and overall how easy a table will be.\n\n"
+        "Then reply with ONLY a JSON object (no markdown, no text before/after), "
+        "each value a SHORT phrase (<=14 words) or null:\n"
+        '{"status": "likely_available" | "call_ahead" | "hard_to_get" | '
+        '"closed_that_day" | "unknown", '
+        '"headline": "one short sentence on how easy a table is", '
+        '"hours": "e.g. Wed-Sun 5-9:30pm" | null, '
+        '"booking": "e.g. Resy, books 30 days out" | null, '
+        '"notice": "recent closure/private event" | null}'
     )
     try:
         client = anthropic.Anthropic()
@@ -77,14 +84,53 @@ def live_availability(name: str, neighborhood: str, date: Optional[str],
                 if url:
                     sources.append({"title": getattr(r, "title", "") or url, "url": url})
 
-    summary = " ".join(t.strip() for t in text_parts if t.strip()).strip()
-    if not summary:
+    text = " ".join(t.strip() for t in text_parts if t.strip()).strip()
+    if not text:
         return None
+
     # de-dupe sources by url, cap a few
     seen, uniq = set(), []
     for s in sources:
         if s["url"] in seen:
             continue
         seen.add(s["url"]); uniq.append(s)
-    return {"summary": summary, "sources": uniq[:4], "source": "agent",
-            "checked_at": _dt.datetime.utcnow().isoformat(timespec="seconds") + "Z"}
+
+    fields = _parse_json(text)
+    if not fields:
+        # fallback: model returned prose — clean it into a short headline
+        clean = re.sub(r"[*_`#]+", "", text)
+        clean = re.sub(r"\s+", " ", clean).strip()
+        fields = {"status": "unknown", "headline": clean[:220],
+                  "hours": None, "booking": None, "notice": None}
+
+    def short(v):
+        if not isinstance(v, str):
+            return None
+        v = v.strip()
+        return v[:120] if v and v.lower() not in ("null", "none", "n/a", "") else None
+
+    status = fields.get("status") if fields.get("status") in _STATUSES else "unknown"
+    return {
+        "status": status,
+        "headline": short(fields.get("headline")) or "Availability information found.",
+        "hours": short(fields.get("hours")),
+        "booking": short(fields.get("booking")),
+        "notice": short(fields.get("notice")),
+        "sources": uniq[:4], "source": "agent",
+        "checked_at": _dt.datetime.utcnow().isoformat(timespec="seconds") + "Z",
+    }
+
+
+_STATUSES = {"likely_available", "call_ahead", "hard_to_get",
+             "closed_that_day", "unknown"}
+
+
+def _parse_json(text: str) -> Optional[dict]:
+    m = re.search(r"\{.*\}", text, re.S)      # last-resort: grab the JSON object
+    if not m:
+        return None
+    try:
+        obj = json.loads(m.group(0))
+        return obj if isinstance(obj, dict) else None
+    except Exception:
+        return None
